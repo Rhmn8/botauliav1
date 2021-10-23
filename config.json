@@ -1,0 +1,26 @@
+{
+    "ownerNumber": "6285821676621@s.whatsapp.net",
+    "pacarNumber": "6285397295066@s.whatsapp.net",
+    "ownerName": "aulia rahman",
+    "pacarName": "hasnia khumaira",
+    "limitCount": 60,
+    "gamewaktu": 90,
+    "botName": "SKIMURA-BOT",
+    "pathImg": "./media/image.jpg",
+    "apikey": "0b0ffba94f2b803b88721e4f",
+    "fake": "SKIMURA-BOTZ VERIFIED",
+    "sesidInsta": "default",
+    "sessionName": "AuliaNia",
+    "txtDonasi": "GOPAY/PULSA : 085821676621\nTrakteer : https://trakteer.id/gaadacuk\nSaweeria : https://saweria.co/gaadacuk\nPulsa : 085821676621",
+    "gcount": {
+        "prem": 40,
+        "user": 20
+    },
+    "emote":{
+        "free": "◽",
+        "owner": "◾",
+        "limit": "🔸",
+        "glimit": "🔹",
+        "prem": "💰"
+    }
+}
