@@ -452,6 +452,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'groupmenu': case prefix+'grupmenu':{
+                if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isUser) return  reply(mess.OnlyUser)
                 textImg(groupMenu(prefix, setting.botName))
             }
