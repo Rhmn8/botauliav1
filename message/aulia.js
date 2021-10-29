@@ -447,6 +447,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'creatormenu': case prefix+'ownermenu':{
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (!isUser) return  reply(mess.OnlyUser)
                 textImg(ownerMenu(prefix, setting.botName))
             }
