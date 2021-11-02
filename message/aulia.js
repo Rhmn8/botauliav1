@@ -64,6 +64,7 @@ let antilink = JSON.parse(fs.readFileSync('./database/antilink.json'));
 let antiwame = JSON.parse(fs.readFileSync('./database/antiwame.json'));
 let antilinkig = JSON.parse(fs.readFileSync('./database/antilinkig.json'));
 let antilinkyt = JSON.parse(fs.readFileSync('./database/antilinkyt.json'));
+let antilinkbitly = JSON.parse(fe.readFileSync('./database/antilinkbitly.json'));
 let samih = JSON.parse(fs.readFileSync('./database/simi.json'));
 let badword = JSON.parse(fs.readFileSync('./database/badword.json'));
 let grupbadword = JSON.parse(fs.readFileSync('./database/grupbadword.json'));
@@ -139,6 +140,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
         const isAntiWame = isGroup ? antiwame.includes(from) : false
         const isAntilinkIg = isGroup ? antilinkig.includes(from) : false
         const isAntilinkyt = isGroup ? antilinkyt.includes(from) : false
+        const isAntilinkbitly = isGroup ? antilinkbitly.includes(from) : false
         const isSimi = isGroup ? samih.includes(from) : false
         const isWelcome = isGroup ? welcome.includes(from) : false
         const isLeft = isGroup ? left.includes(from) : false
@@ -268,10 +270,17 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
            if (chats.includes("#izinmin")) return reply("#izinmin diterima")
            if (chats.match(/(youtu.be\/)/gi)) {
            reply(`*「 ANTILINK YOUTUBE 」*\n\nsepertinya kamu menggirimkan link youtube, maka kamu akan kami kick sorry ye`)
-           aulia.groupRemove(from, [sender])
+           
+       
+       // antilinkbitly
+       if (isGroup && isAntilinkbitly && !isGroupAdmins && isBotGroupAdmind){
+          if (chats.includes("#izinmin")) return reply("#izinmin diterima")
+          if (chats.match(/(bit.ly\/)/gi)) {
+          reply(`*「 ANTILINK BITLY 」*\n\nsepertinya kamu menggirimkan link bitly, maka kamu akan dikick oleh bot, jangan lupa bawa makanan`)
+          aulia.groupRemove(from, [sender])
          }
     }
-       
+
        // auto ketik by rahman ganz
        if (autoketik){
           if (autoketik == true) return
@@ -2569,6 +2578,24 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                    let anu = antilinkyt.indexOf(from)
                    fs.writeFileSync('./database/antilinkyt.json', JSON.stringify(antilinkyt))
                    reply('「 ANTILINK YT 」Telah dinonaktifkan')
+               } else {
+                  reply(`pilih enable atau disable`)
+                 }
+                 break
+            case prefix+'antilinkbitly':
+                if (!isUser) return reply(mess.OnlyUser)
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmins)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (args[1].toLowerCase() === 'enable'){
+                   if (isAntilinkbitly) return reply(`udah aktif kak`)
+                   antilinkbitly.push(from)
+                   fs.writeFileSync('./database/antilinkbitly.json', JSON.stringify(antilinkbitly))
+                   reply('「 ANTILINK BITLY 」Telah aktif')
+              } else if (args[1].toLowerCase() === 'disable'){
+                   let anu = antilinkbitly.indexOf(from)
+                   fs.writeFileSync('./database/antilinkbitly.json', JSON.stringify(antilinkbitly))
+                   reply('「 ANTILINK BITLY 」Telah dinonaktifkan')
                } else {
                   reply(`pilih enable atau disable`)
                  }
