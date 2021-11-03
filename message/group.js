@@ -10,14 +10,14 @@ const { getBuffer, sleep } = require("../lib/myfunc");
 let setting = JSON.parse(fs.readFileSync('./config.json'));
 let { botName } = setting
 
-module.exports = async(xinz, anj, welcome, left) => {
+module.exports = async(aulia, anj, welcome, left) => {
     const isWelcome = welcome.includes(anj.jid)
     const isLeft = left.includes(anj.jid)
-    const mdata = await xinz.groupMetadata(anj.jid)
+    const mdata = await aulia.groupMetadata(anj.jid)
     const groupName = mdata.subject
 
     if (anj.action === 'add'){
-        if (anj.participants[0] === xinz.user.jid){
+        if (anj.participants[0] === aulia.user.jid){
             await sleep(5000)
             aulia.updatePresence(anj.jid, Presence.composing)
             aulia.sendMessage(anj.jid, `Hai aku ${botName}, silahkan kirim #menu`, MessageType.text)
