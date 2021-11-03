@@ -1,11 +1,10 @@
 {
-    "wait": "*[PROSES]* mohon tunggu bentar, harap jangan spam!",
+    "wait": "*Tunggu permintaan anda sedang diproses*",
     "error": {
         "Iv": "Link yang kamu berikan tidak valid",
         "api": "Maaf terjadi kesalahan"
     },
     "OnlyGrup": "Perintah ini hanya bisa digunakan di grup",
-    "OnlyUser": "Maaf anda belum terdaftar di database\n\ndaftar sekarang! contoh : #daftar rahman|16\n\nnote : jangan pakai nama owner saya-!",
     "OnlyPM": "Perintah ini hanya bisa digunakan di private message",
     "GrupAdmin": "Perintah ini hanya bisa digunakan oleh Admin Grup",
     "BotAdmin": "Bot Harus menjadi admin",
