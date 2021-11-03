@@ -1,4 +1,3 @@
-// -------> CREATE RAHMAN GANZ <-------
 "use strict";
 const {
     WAConnection,
@@ -16,7 +15,6 @@ const {
     WA_DEFAULT_EPHEMERAL
 } = require("@adiwajshing/baileys");
 const fs = require("fs");
-const crypto = require("crypto");
 const moment = require("moment-timezone");
 const { exec, spawn } = require("child_process");
 const ffmpeg = require("fluent-ffmpeg");
@@ -60,7 +58,6 @@ let antilink = JSON.parse(fs.readFileSync('./database/antilink.json'));
 let antiwame = JSON.parse(fs.readFileSync('./database/antiwame.json'));
 let antilinkig = JSON.parse(fs.readFileSync('./database/antilinkig.json'));
 let antilinkyt = JSON.parse(fs.readFileSync('./database/antilinkyt.json'));
-let antilinkbitly = JSON.parse(fe.readFileSync('./database/antilinkbitly.json'));
 let badword = JSON.parse(fs.readFileSync('./database/badword.json'));
 let grupbadword = JSON.parse(fs.readFileSync('./database/grupbadword.json'));
 let senbadword = JSON.parse(fs.readFileSync('./database/senbadword.json'));
@@ -131,10 +128,9 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 	    const isBan = cekBannedUser(sender, ban)
         const isAfkOn = afk.checkAfkUser(sender, _afk)
         const isAntiLink = isGroup ? antilink.includes(from) : false
-        const isAntiWame = isGroup ? antiwame.includes(from) : false 
+        const isAntiWame = isGroup ? antiwame.includes(from) : false
         const isAntilinkIg = isGroup ? antilinkig.includes(from) : false
         const isAntilinkyt = isGroup ? antilinkyt.includes(from) : false
-        const isAntilinkbitly = isGroup ? antilinkbitly.includes(from) : false
         const isWelcome = isGroup ? welcome.includes(from) : true
         const isLeft = isGroup ? left.includes(from) : true
         const isNsfw = isGroup ? nsfw.includes(from) : false
@@ -213,12 +209,6 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
      })
 }
 
-       // buat daftar neh
-
-        const createSerial = (size) => {
-            return crypto.randomBytes(size).toString('hex').slice(0, size)
-        }
-        
         const isImage = (type === 'imageMessage')
         const isVideo = (type === 'videoMessage')
         const isSticker = (type == 'stickerMessage')
@@ -230,6 +220,36 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
         if (mode === 'self'){
             if (!fromMe) return
         }
+        // auto ketik by rahman ganz
+       if (autoketik){
+          if (autoketik == true) return
+          await aulia.updatePresence(from, Presence.composing)
+    }
+      
+        // runtime dibio bang🗿 by rahman ganz
+          let settingstatus = 0;
+          if (new Date() * 1 - settingstatus > 1000){
+             let uptime = process.uptime()
+             await aulia.setStatus(`aktif selama ${runtime(process.uptime())}`)
+             settingstatus = new Date() * 1;
+        }
+        
+        // Antilink ig 
+       if (isGroup && isAntilinkIg && !isOwner && !isGroupAdmins && isBotGroupAdmins){
+        if (chats.includes("#izinmin")) return reply("#izinmin diterima")
+        if (chats.match(/(instagram.com\/)/gi)) {
+        reply(`*「 ANTILINK INSTAGRAM 」*\n\nsepertinya kamu menggirimkan Link instagram , maaf kamu akan kami kick`)
+           aulia.groupRemove(from, [sender])
+       }
+   }
+
+        // Antilink YT
+        if (isGroup && isAntilinkyt && !isOwner && !isGroupAdmins && isBotGroupAdmins){
+           if (chats.includes("#izinmin")) return reply("#izinmin diterima")
+           if (chats.match(/(youtu.be\/)/gi)) {
+           reply(`*「 ANTILINK YOUTUBE 」*\n\nsepertinya kamu menggirimkan link youtube, maka kamu akan kami kick sorry ye`)
+         }
+    }
 
         // Anti link
         if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
@@ -245,46 +265,6 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 aulia.groupRemove(from, [sender])
             }
         }
-        
-        // Antilink ig 
-       if (isGroup && isAntilinkIg && !isOwner && !isGroupAdmins && isBotGroupAdmins){
-        if (chats.includes("#izinmin")) return reply("#izinmin diterima")
-       	if (chats.match(/(instagram.com\/)/gi)) {
-       	reply(`*「 ANTILINK INSTAGRAM 」*\n\nsepertinya kamu menggirimkan Link instagram , maaf kamu akan kami kick`)
-           aulia.groupRemove(from, [sender])
-       }
-   }
-
-        // Antilink YT
-        if (isGroup && isAntilinkyt && !isOwner && !isGroupAdmins && isBotGroupAdmins){
-           if (chats.includes("#izinmin")) return reply("#izinmin diterima")
-           if (chats.match(/(youtu.be\/)/gi)) {
-           reply(`*「 ANTILINK YOUTUBE 」*\n\nsepertinya kamu menggirimkan link youtube, maka kamu akan kami kick sorry ye`)
-           
-       
-       // antilinkbitly
-       if (isGroup && isAntilinkbitly && !isGroupAdmins && isBotGroupAdmind){
-          if (chats.includes("#izinmin")) return reply("#izinmin diterima")
-          if (chats.match(/(bit.ly\/)/gi)) {
-          reply(`*「 ANTILINK BITLY 」*\n\nsepertinya kamu menggirimkan link bitly, maka kamu akan dikick oleh bot, jangan lupa bawa makanan`)
-          aulia.groupRemove(from, [sender])
-         }
-    }
-
-       // auto ketik by rahman ganz
-       if (autoketik){
-          if (autoketik == true) return
-          await aulia.updatePresence(from, Presence.composing)
-    }
-      
-        // runtime dibio bang🗿 by rahman ganz
-          let settingstatus = 0;
-          if (new Date() * 1 - settingstatus > 1000){
-             let uptime = process.uptime()
-             await aulia.setStatus(`aktif selama ${runtime(process.uptime())}`)
-             settingstatus = new Date() * 1;
-        }
-
         // Badword
         if (isGroup && isBadword && !isOwner && !isGroupAdmins){
             for (let kasar of badword){
@@ -352,6 +332,11 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
         // Premium
         _prem.expiredCheck(premium)
 
+        // Auto Regist
+        if (isCmd && !isUser){
+			pendaftar.push(sender)
+			fs.writeFileSync('./database/user.json', JSON.stringify(pendaftar))
+        } 
 
         // AFK
         if (isGroup) {
@@ -409,17 +394,15 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
         }       
         switch(command){
             case 'prefix': case 'cekprefix':{
-                textImg(`bot menggunakan prefix ${prefix}`)
+                textImg(`${prefix}`)
             }
                 break
 
             case prefix+'allmenu':{
-                if (!isUser) return  reply(mess.OnlyUser)
                 textImg(menu(prefix, setting.emote))
             }
                 break
             case prefix+'help': case prefix+'menu':{
-                if (!isUser) return  reply(mess.OnlyUser)
                 axios.get(`https://api-ramlan.herokuapp.com/api/ucapan?timeZone=Asia/Jakarta`)
                 .then(async(ucapan) => {
                 let sisalimit = getLimit(sender, limitCount, limit)
@@ -440,86 +423,69 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'stickermenu': case prefix+'stikermenu': case prefix+'menusticker': case prefix+'menusticker':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(stickerMenu(prefix, setting.botName))
+                textImg(stickerMenu(prefix))
             }
                 break
             case prefix+'creatormenu': case prefix+'ownermenu':{
-                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(ownerMenu(prefix, setting.botName))
+                textImg(ownerMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'groupmenu': case prefix+'grupmenu':{
-                if (!isGroup) return reply(mess.OnlyGrup)
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(groupMenu(prefix, setting.botName))
+                textImg(groupMenu(prefix))
             }
                 break
             case prefix+'sistemmenu': case prefix+'menusistem':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(sistemMenu(prefix, setting.botName))
+                textImg(sistemMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'gabutmenu':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(gabutMenu(prefix, setting.botName))
+                textImg(gabutMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'gamemenu': case prefix+'menugame':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(gameMenu(prefix, setting.botName))
+                textImg(gameMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'downloadmenu': case prefix+'menudownload':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(downloadMenu(prefix, setting.botName))
+                textImg(downloadMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'searchmenu': case prefix+'menusearch':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(searchMenu(prefix, setting.botName))
+                textImg(searchMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'stalkermenu': case prefix+'stalkmenu':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(stalkMenu(prefix, setting.botName))
+                textImg(stalkMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'randommenu': case prefix+'menurandom':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(randomMenu(prefix, setting.botName))
+                textImg(randomMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'animemenu': case prefix+'menuanime': case prefix+'wibumenu':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(animeMenu(prefix, setting.botName))
+                textImg(animeMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'toolsmenu': case prefix+'menutools':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(toolsMenu(prefix, setting.botName))
+                textImg(toolsMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'makermenu': case prefix+'menumaker':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(makerMenu(prefix, setting.botName))
+                textImg(makerMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'othermenu': case prefix+'menuother':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(otherMenu(prefix, setting.botName))
+                textImg(otherMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'nsfwmenu': case prefix+'hentaimenu': case prefix+'menunsfw': case prefix+'menuhentai':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(hentaiMenu(prefix, setting.botName))
+                textImg(hentaiMenu(prefix, setting.ownerName))
             }
                 break
             case prefix+'storagemenu': case prefix+'storage': case prefix+'menustorage':{
-                if (!isUser) return  reply(mess.OnlyUser)
-                textImg(storageMenu(prefix, setting.botName))
+                textImg(storageMenu(prefix, setting.ownerName))
             }
+            
                 break
             case prefix+'sewabot':{
                 if (!isUser) return  reply(mess.OnlyUser)
@@ -527,7 +493,6 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'newupdate':{
-                if (!isUser) return reply(mess.OnlyUser)
                 textImg(rahmanMenu(prefix, setting.botName))
             }
                 break
@@ -1202,7 +1167,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             case prefix+'creator':
                 aulia.sendContact(from, ownerNumber.split("@")[0], setting.ownerName, msg)
                 .then((res) => aulia.sendMessage(from, 'Nih kontak ownerku', text, {quoted: res}))
-                break 
+                break
             case prefix+'ownerdoi':
             case prefix+'pacarkuh':
                  aulia.sendContact(from, pacarNumber.split("@")[0], setting.pacarName, msg)
@@ -1792,22 +1757,6 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 						limitAdd(sender, limit)
 						}						
                       break
-//-----------------< pendaftar >---------------
-            case prefix+'daftar':
-                const namaUser = q.substring(0, q.indexOf('|') - 0)
-                const umurUser = q.substring(q.lastIndexOf('|') + 1)
-                const serialUser = createSerial(20)
-                if (namaUser.length >= 20) return reply(`Namanya kepanjangan kak :)`)
-                if (umurUser.length >= 3, umurUser.length <= 1) return reply(`Umur min 10 tahun max 40 tahun`)
-                   pendaftar.push(sender)
-	    fs.writeFileSync('./database/user.json', JSON.stringify(pendaftar))
-	    try {
-	    var pic = await aulia.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
-	    } catch {
-	    var pic = 'https://i.ibb.co/Gp4H47k/7dba54f7e250.jpg'
-	    }
-	    aulia.sendMessage(from, await getBuffer(pic), image, {quoted: msg, caption: `╭─「 *PENDAFTARAN USER* 」\n\nPendaftaran berhasil dengan\n Pada ${tanggal} ${jam}\n[Nama] : ${namaUser}\n[Umur] : ${umurUser}\n[Nomor] : wa.me/${sender.split("@")[0]}\n\n\nUntuk menggunakan bot\nsilahkan kirim ${prefix}help/menu\nTotal Pengguna: ${pendaftar.length} Orang╰─────────────────────────`})
-	    break
 //------------------< Premium >-------------------
             case prefix+'addprem':
                 if (!isOwner) return reply(mess.OnlyOwner)
@@ -2050,39 +1999,42 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 //------------------< Owner >-------------------
             case prefix+'setpp': case prefix+'setppbot':
             case prefix+'setpic': case prefix+'setpicbot':{
-                if (!isOwner && !fromMe && !isPacar) return reply(mess.OnlyOwner)
+                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
                 if (isImage || isQuotedImage) {
                     let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : msg
                     let media = await aulia.downloadMediaMessage(encmedia)
                     aulia.updateProfilePicture(aulia.user.jid, media)
-                    reply(`done`)
+                    .then((res) => reply(jsonformat(res)))
+					.catch((err) => reply(jsonformat(err)))
                 } else {
                     reply(`Kirim gambar atau reply gambar dengan caption ${command}`)
                 }
             }
                 break
             case prefix+'setname':{
-                if (!isOwner && !fromMe && !isPacar) return reply(mess.OnlyOwner)
-                if (args.length < 2) return reply(`Kirim perintah ${command} nama\n\nContoh : ${command} Skimura Bot`)
+                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
+                if (args.length < 2) return reply(`Kirim perintah ${command} nama\n\nContoh : ${command} auliaBot`)
                 aulia.updateProfileName(q)
-                reply(`sukses mengubah name`)
+                .then((res) => reply(jsonformat(res)))
+				.catch((err) => reply(jsonformat(err)))
             }
                 break
             case prefix+'setbio':{
-                if (!isOwner && !fromMe && !isPacar) return reply(mess.OnlyOwner)
-                if (args.length < 2) return reply(`Kirim perintah ${command} nama\n\nContoh : ${command} Skimura Bot`)
+                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
+                if (args.length < 2) return reply(`Kirim perintah ${command} nama\n\nContoh : ${command} auliaBot`)
                 aulia.setStatus(q)
-                reply(`sukses mengubah bio`)
+                .then((res) => reply(jsonformat(res)))
+				.catch((err) => reply(jsonformat(err)))
             }
                 break
             case prefix+'self':{
-                if (!isOwner && !fromMe && !isPacar) return reply(mess.OnlyOwner)
+                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
                 mode = 'self'
                 textImg('Berhasil berubah ke mode self')
             }
                 break
             case prefix+'publik': case prefix+'public':{
-                if (!isOwner && !fromMe && !isPacar) return reply(mess.OnlyOwner)
+                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
                 mode = 'public'
                 textImg('Berhasil berubah ke mode public')
             }
@@ -2127,23 +2079,30 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     break
                     
             case prefix+'bc':
-		    if (!isOwner && !isPacar) return reply('Kamu Owner??')
-		    if (args.length < 1) return reply('Mau Ngapain?')
-		    let anu = await aulia.chats.all()
-		    if (isImage || isQuotedImage) {
-			const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-			buff = await aulia.downloadMediaMessage(encmedia)
-			for (let _ of anu) {
-			    aulia.sendMessage(_.jid, buff, image, {caption: `[ SKIMURA BOT BROADCAST ]\n\n${body.slice(4)}`})
-			}
-			reply('Suksess broadcast')
-		    } else {
-			for (let _ of anu) {
-			    sendMess(_.jid, `[ SKIMURA BOT BROADCAST ]\n\n${body.slice(4)}`)
-			}
-			reply('Suksess broadcast')
-		    }
-		    break 
+                if (!isOwner) return reply(mess.OnlyOwner)
+                if (args.length < 2) return reply(`Masukkan text`)
+                let chiit = await aulia.chats.all()
+                if (isImage || isQuotedImage) {
+                    let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : msg
+                    let media = await aulia.downloadMediaMessage(encmedia)
+                    for (let i of chiit){
+                        aulia.sendMessage(i.jid, media, image, {caption: q})
+                    }
+                    reply(`Sukses`)
+                } else if (isVideo || isQuotedVideo) {
+                    let encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : msg
+                    let media = await aulia.downloadMediaMessage(encmedia)
+                    for (let i of chiit){
+                        aulia.sendMessage(i.jid, media, video, {caption: q})
+                    }
+                    reply(`Sukses`)
+                } else {
+                    for (let i of chiit){
+                        aulia.sendMessage(i.jid, q, text)
+                    }
+                    reply(`Sukses`)
+                }
+                break
 //------------------< G R U P >-------------------
             case prefix+'delete':
 			case prefix+'del':
@@ -2176,98 +2135,84 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 aulia.sendMessage(from, await getBuffer(pic), image, {quoted: msg, caption: ingfo, contextInfo: {"mentionedJid": [groupMetadata.owner.replace('@c.us', '@s.whatsapp.net')]}})
                 break
             case prefix+'add':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
 				if (isQuotedMsg && args.length < 2) {
                     aulia.groupAdd(from, [quotedMsg.sender])
-                    reply(`Sukses menambah member baru`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else if (args.length < 3 && !isNaN(args[1])){
 					aulia.groupAdd(from, [args[1] + '@s.whatsapp.net'])
-					reply(`Wahhh makanan kita udh datang`)
+					.then((res) => reply(jsonformat(res)))
+					.catch((err) => reply(jsonformat(err)))
 				} else {
-					reply(`kirim perintah ${prefix}add @tag atau reply pesan orang yang ingin di kick`)
+					reply()
 				}
                 break
             case prefix+'kick':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 if (mentioned.length !== 0){
                     aulia.groupRemove(from, mentioned)
-                    reply(`Mampus di kick lu`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else if (isQuotedMsg) {
                     if (quotedMsg.sender === ownerNumber) return reply(`Tidak bisa kick Owner`)
                     aulia.groupRemove(from, [quotedMsg.sender])
-                    reply(`Kasian di kick🤣 , jangan bawa makanan ya kak`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else if (!isNaN(args[1])) {
                     aulia.groupRemove(from, [args[1] + '@s.whatsapp.net'])
-                    reply(`Selamat tinggal.... Semoga kmu Hidup di alam sana ya`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else {
                     reply(`Kirim perintah ${prefix}kick @tag atau nomor atau reply pesan orang yang ingin di kick`)
                 }
                 break
-            case prefix+'kicktime':
-                if (!isUser) return reply(mess.OnlyUser)
-                if (!isGroup) return reply(`Perintah Ini Hanya Untuk Di Dalam Group`)
-                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-                if (!isGroupAdmins) return reply(`Jadiin Bot Sebagai Admin Biar Bot Kick Member`)
-                if (mentioned.length !== 0){
-                setTimeout(() => {
-                }, 1000) // 1000 = 1s,
-                  aulia.sendMessage(from, `Bismillah Kick`, text)
-                setTimeout(() => {
-                }, 20000) // 1000 = 1s,
-                  aulia.sendMessage(from, `Babay sayang`, text)
-                setTimeout(() => {
-                }, 30000) // 1000 = 1s,
-                  aulia.sendMessage(from, `Yeee Anda dikick`, text)
-                  aulia.groupRemove(from, mentioned)
-             } else {
-                  reply(`Kirim perintah ${prefix}kicktime @tag yg ingin di kick`)
-                }
-                break
             case prefix+'promote':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 if (mentioned.length !== 0){
                     aulia.groupMakeAdmin(from, mentioned)
-                    reply(`Anda sekarang udh jadi admin Keren kak`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else if (isQuotedMsg) {
                     aulia.groupMakeAdmin(from, [quotedMsg.sender])
-                    reply(`Selamat ya kak anda jadi admin baru`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else if (!isNaN(args[1])) {
                     aulia.groupMakeAdmin(from, [args[1] + '@s.whatsapp.net'])
-                    reply(`Sukses menambah admin group ini`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else {
                     reply(`Kirim perintah ${prefix}promote @tag atau nomor atau reply pesan orang yang ingin di promote`)
                 }
                 break
             case prefix+'demote':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 if (mentioned.length !== 0){
                     aulia.groupDemoteAdmin(from, mentioned)
-                    reply(`Yahh di turunkan jadi member dong:(`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else if (isQuotedMsg) {
                     if (quotedMsg.sender === ownerNumber) return reply(`Tidak bisa kick Owner`)
                     aulia.groupDemoteAdmin(from, [quotedMsg.sender])
-                    reply(`maaf ya kak anda di turunkan jadi member lagi`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else if (!isNaN(args[1])) {
                     aulia.groupDemoteAdmin(from, [args[1] + '@s.whatsapp.net'])
-                    reply(`sukses demote admin group`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else {
                     reply(`Kirim perintah ${prefix}demote @tag atau nomor atau reply pesan orang yang ingin di demote`)
                 }
                 break
             case prefix+'linkgc': case prefix+'linkgrup': case prefix+'linkgroup':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 aulia.groupInviteCode(from)
@@ -2276,26 +2221,26 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             case prefix+'leave':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
-                reply('Byee.... Syaa mau Keluar Yah')
+                reply('bye...')
                 .then(() => aulia.groupLeave(from))
                 break
             case prefix+'setdesc':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 if (args.length === 1) return reply(`Penggunaan ${prefix}setdesc desc`)
                 aulia.groupUpdateDescription(from, q)
-                reply(`Sukses Mengubah Setdesc DiGroup Ini`)
+                .then((res) => reply(jsonformat(res)))
+                .catch((err) => reply(jsonformat(err)))
                 break
             case prefix+'setgrupname':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 if (args.length === 1) return reply(`Penggunaan ${prefix}setgrupname name`)
                 aulia.groupUpdateSubject(from, q)
-                reply(`Sukses Mengubah Setgrupname DiGroup Ini`)
+                .then((res) => reply(jsonformat(res)))
+                .catch((err) => reply(jsonformat(err)))
                 break
             case prefix+'sider': case prefix+'chatinfo':
                 if (!isGroup) return reply(mess.OnlyGrup)
@@ -2315,23 +2260,22 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     .catch((err) => reply(jsonformat(err)))
                 break
             case prefix+'opengrup':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 aulia.groupSettingChange(from, "announcement", false)
-                reply(`Sukses Mengubah Grup Menjadi Agar Semua Mengirim pesan Di group ini`)
+                .then((res) => reply(jsonformat(res)))
+                .catch((err) => reply(jsonformat(err)))
                 break
             case prefix+'closegrup':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 aulia.groupSettingChange(from, "announcement", true)
-                reply(`Sukses Mengubah Grup Menjadi Agar Hanya Dapat Admin yang mengirim pesan Di Group ini`)
+                .then((res) => reply(jsonformat(res)))
+                .catch((err) => reply(jsonformat(err)))
                 break
             case prefix+'setppgrup':
-                if (!isUser) return reply(mess.OnlyUser)
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner)return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
@@ -2339,7 +2283,8 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : msg
                     let media = await aulia.downloadMediaMessage(encmedia)
                     aulia.updateProfilePicture(from, media)
-                    reply(`Sukses`)
+                    .then((res) => reply(jsonformat(res)))
+                    .catch((err) => reply(jsonformat(err)))
                 } else {
                     reply(`Kirim atau tag gambar dengan caption ${prefix}setppgrup`)
                 }
@@ -2350,7 +2295,8 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 if (!isUrl(args[1]) && !args[1].includes('chat.whatsapp.com')) return reply(mess.error.Iv)
                 let code = args[1].replace('https://chat.whatsapp.com/', '')
                 aulia.acceptInvite(code)
-                reply(`Berhasil Join`)
+                .then((res) => reply(jsonformat(res)))
+                .catch((err) => reply(jsonformat(err)))
                 break
             case prefix+'tagall':
                 if (!isGroup) return reply(mess.OnlyGrup)
@@ -2443,6 +2389,44 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     reply('Welcome nonaktif')
                 } else {
                     reply(`Pilih enable atau disable\nContoh : ${prefix}nsfw enable`)
+                }
+                break
+            case prefix+'antilinkig':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (args.length === 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
+                if (args[1].toLowerCase() === 'enable'){
+                    if (isAntilinkIg) return reply(`Udah aktif`)
+                    antilinkig.push(from)
+		    fs.writeFileSync('./database/antilinkig.json', JSON.stringify(antilinkig))
+		    reply('Antilinkig grup aktif')
+                } else if (args[1].toLowerCase() === 'disable'){
+                    let anu = antilinkig.indexOf(from)
+                    antilinkig.splice(anu, 1)
+                    fs.writeFileSync('./database/antilinkig.json', JSON.stringify(antilinkig))
+                    reply('Antilinkig grup nonaktif')
+                } else {
+                    reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
+                }
+                break
+            case prefix+'antilinkyt':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (args.length === 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
+                if (args[1].toLowerCase() === 'enable'){
+                    if (isAntiLinkyt) return reply(`Udah aktif`)
+                    antilinkyt.push(from)
+		    fs.writeFileSync('./database/antilinkyt.json', JSON.stringify(antilinkyt))
+		    reply('Antilinkyt grup aktif')
+                } else if (args[1].toLowerCase() === 'disable'){
+                    let anu = antilinkyt.indexOf(from)
+                    antilinkyt.splice(anu, 1)
+                    fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
+                    reply('Antilinkyt grup nonaktif')
+                } else {
+                    reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
                 }
                 break
             case prefix+'antilink':
@@ -2592,55 +2576,6 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 limitAdd(sender, limit)
                 }
                 break
-//-------------------> AUto Reponder <-----------------
-             case 'waalaikumsalam':{
-             	textImg(`alhamdulillah kak`)
-             }
-                  break 
-             case 'kick':{
-             	textImg(`silahkan kirim ${prefix}kick @tag atau reply pesan orang`)
-             }
-                 break 
-             case ':v':{
-                textImg(`gaada keyboard lagi aja kamu kak😂`)
-            }
-                break
-             case 'deface':{
-             	textImg(`Perusakan situs web atau deface situs web adalah serangan terhadap situs web yang mengubah tampilan visual situs web atau halaman web. Ini biasanya merupakan pekerjaan defacer, yang membobol peladen web dan mengganti situs web yang di-hosting dengan situs web mereka sendiri`)
-             }
-                  break 
-             case 'termux':{
-             	textImg(`Termux adalah emulator terminal Android dan aplikasi lingkungan Linux yang bekerja langsung tanpa rooting atau pengaturan tertentu. Termux yang juga termasuk lingkungan Linux berbasis Debian yang bisa mendukung perangkat berarsitektur 32-bit dan 64-bit dengan dijalankan pada OS Android versi 5.0 ke atas`)
-             }
-                  break 
-             case 'hallo': case 'halo':{
-                 textImg(`Hallo Juga Kak`)
-            }
-                 break
-             case 'hai': case 'Hai':{
-                 textImg(`Hai Juga`)
-            }
-                  break
-             case 'malam':{
-                 textImg(`Too`)
-            }
-                  break
-             case 'gabut': case 'Gabut':{
-                 textImg(`Aku Juga Gabut Main Sama Bot Aja Yuk`)
-            }
-                  break
-             case 'pagi': case 'pgi':{
-                 textImg(`Too`)
-            }
-                 break
-             case 'Bot': case 'bot':{
-                  textImg(`Apaan Manggil Manggil Bot? Kangen Sama Bot Yaaa😂 Canda`)
-            }
-                 break
-             case 'test':{
-                reply(`iya kak? ada yg bisa saya bantu, kalau bingung ketik ${prefix}menu`)
-             }
-                   break
         }
     } catch (err) {
         console.log(color('[ERROR]', 'red'), err)
