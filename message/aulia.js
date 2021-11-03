@@ -2100,7 +2100,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     reply(`Sukses`)
                 } else {
                     for (let i of chiit){
-                        aulia.sendMessage(i.jid, q, text)
+                        sendMessage(i.jid, `*「 SKIMURA BOT BROADCAST 」*\n\n${body.slice(4)}`)
                     }
                     reply(`Sukses`)
                 }
