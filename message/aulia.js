@@ -1192,7 +1192,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 textImg(`Bot ini menggunakan sc : https://github.com/Rhmn8/botauliav1`)
                 break
             case prefix+'runtime':
-                textImg(`*「 RUNTIME BOT SKIMURA 」\n\n*${runtime(process.uptime())}`)
+                textImg(`*「 RUNTIME BOT SKIMURA 」*\n\n${runtime(process.uptime())}`)
                 break
             case prefix+'stats': 
             case prefix+'botstat':{
