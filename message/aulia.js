@@ -493,7 +493,6 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             
                 break
             case prefix+'sewabot':{
-                if (!isUser) return  reply(mess.OnlyUser)
                 textImg(sewabot(setting.botName))
             }
                 break
@@ -515,7 +514,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             case prefix+'s':
             case prefix+'stickergif':
             case prefix+'sgif':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (isImage || isQuotedImage) {
                     let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : msg
                     let media = await aulia.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
@@ -781,7 +780,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 reply(`*Pilihan*\n${prefix}nuliskiri\n${prefix}nuliskanan\n${prefix}foliokiri\n${prefix}foliokanan`)
                 break
             case prefix+'nuliskiri':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}nuliskiri* teks`)
                 reply(mess.wait)
                 const tulisan = body.slice(11)
@@ -810,7 +809,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'nuliskanan':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}nuliskanan* teks`)
                 reply(mess.wait)
                 const tulisan = body.slice(12)
@@ -839,7 +838,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'foliokiri':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}foliokiri* teks`)
                 reply(mess.wait)
                 const tulisan = body.slice(11)
@@ -868,7 +867,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'foliokanan':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}foliokanan* teks`)
                 reply(mess.wait)
                 const tulisan = body.slice(12)
@@ -924,7 +923,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 case prefix+'sandwrite':
                 case prefix+'3dwater':
                 case prefix+'graffiti':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
                 aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/textpro/${command.slice(1)}?apikey=${apikey}&text=${q}`), '', msg).catch(() => reply(mess.error.api))
@@ -945,7 +944,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 case prefix+'lionlogo':
                 case prefix+'wolflogo':
                 case prefix+'ninjalogo':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
@@ -969,7 +968,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 case prefix+'lovetext':
                 case prefix+'burnpaper':
                 case prefix+'lovemessage':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
                 aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/photooxy/${command.slice(1)}?apikey=${apikey}&text=${q}`), '', msg).catch(() => reply(mess.error.api))
@@ -977,7 +976,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 }
                     break
                 case prefix+'pubglogo':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
@@ -1082,7 +1081,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				break
 				case prefix+'darkjokes': case prefix+'darkjoke': case prefix+'jokes': case prefix+'dark':{
 					if (!isPremium) return reply(mess.OnlyPrem)
-					axios.get(`https://api-ramlan.herokuapp.com/api/random/darkjoke?apikey=${apikey}`)
+					axios.get(`https://www.google.com/amp/s/id.pinterest.com/amp/ky0722/dark-jokes/`)
 					.then(({data}) => {
 					sendFileFromUrl(from, data.urlimage, '', msg)
 					limitAdd(sender, limit)
@@ -1098,11 +1097,13 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				}
 				break
 				case prefix+'bucin':{
-					if (!isPremium) return reply(mess.OnlyPrem)
-					axios.get(`https://api-ramlan.herokuapp.com/api/random/bucin?apikey=${apikey}`)
-					.then(({data}) => {
-					textImg(data.bucin)
-					})
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+					data = fs.readFileSync("../lib/bucin.json");
+					jsonData = JSON.parse(data);
+					randIndex = Math.floor(Math.random() * jsonData.length);
+					randKey = jsonData[randIndex];
+					randBucin = '' + randKey.quote + '\n\n_By: ' + randKey.by + '_'
+					textImg(randBucin)
 				}
 				break
 				case prefix+'cehor': case prefix+'ceritahoror':{
@@ -1189,7 +1190,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 textImg(setting.txtDonasi)
                 break
             case prefix+'sourcecode': case prefix+'sc': case prefix+'src':
-                textImg(`Bot ini menggunakan sc : https://github.com/Rhmn8/botauliav1`)
+                textImg(`Bot ini menggunakan sc : https://github.com/Rhmn8/botauliav1\n\nNote :\njangan dijual and dibeli!`)
                 break
             case prefix+'runtime':
                 textImg(`*「 RUNTIME BOT SKIMURA 」*\n\n${runtime(process.uptime())}`)
@@ -1529,7 +1530,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
      		break
 //------------------< Stalker >-------------------
             case prefix+'igstalk': case prefix+'stalkig':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}igstalk* _username_`)
                 reply(mess.wait)
                 axios.get(`https://api-ramlan.herokuapp.com/api/igstalk?username=${args[1]}&apikey=${apikey}`)
@@ -1557,7 +1558,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             }
                 break
             case prefix+'ghstalk': case prefix+'githubstalk': case prefix+'ghuser':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}ghstalk* _username_`)
                 reply(mess.wait)
                 axios.get(`https://api.github.com/users/${args[1]}`)
