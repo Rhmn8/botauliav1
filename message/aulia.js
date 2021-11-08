@@ -432,6 +432,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 break
             case prefix+'stickermenu': case prefix+'stikermenu': case prefix+'menusticker': case prefix+'menusticker':{
                 textImg(stickerMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'creatormenu': case prefix+'ownermenu':{
@@ -443,7 +444,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             	if (!isGroup) return reply(mess.OnlyGrup)
                 textImg(groupMenu(prefix, setting.botName))
                 aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
-            }
+                }
                 break
             case prefix+'sistemmenu': case prefix+'menusistem':{
                 textImg(sistemMenu(prefix, setting.botName))
