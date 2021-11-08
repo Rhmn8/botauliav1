@@ -1,4 +1,5 @@
 // --------> CREATED BY RAHMAN GANZ AND MASTAHKU <--------
+// -----< [ aqulz, ramlan id, mhankbarbar, nurutomo, aulia rahman ] >----- 
 "use strict";
 const {
     WAConnection,
@@ -45,6 +46,10 @@ const { fbdl } = require("../lib/fbdl");
 const { fakeStatus, fakeToko } = require("./fakeReply");
 const game = require("../lib/game");
 const { addBadword, delBadword, isKasar, addCountKasar, isCountKasar, delCountKasar } = require("../lib/badword");
+
+// Plugins by rahman ganz
+
+
 
 // Database
 let pendaftar = JSON.parse(fs.readFileSync('./database/user.json'))
@@ -95,6 +100,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
     try {
         const { menu, newMenu, stickerMenu, ownerMenu, groupMenu, sistemMenu, gabutMenu, gameMenu, downloadMenu, searchMenu, stalkMenu, animeMenu, toolsMenu, makerMenu, otherMenu, hentaiMenu, storageMenu, listMenu, rahmanMenu } = require("./help");
         const { sewabot } = require("./donate");
+        const { rules } = require("./rules");
         const { type, quotedMsg, isGroup, isQuotedMsg, mentioned, sender, from, fromMe, pushname, chats, isBaileys } = msg
         if (isBaileys) return
         const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
@@ -401,7 +407,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 break
 
             case prefix+'allmenu':{
-                textImg(menu(prefix, setting.emote))
+                reply(`ngapain bang allmenu? kan gaada commandnya`)
             }
                 break
             case prefix+'help': case prefix+'menu':{
@@ -436,70 +442,91 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             case prefix+'groupmenu': case prefix+'grupmenu':{
             	if (!isGroup) return reply(mess.OnlyGrup)
                 textImg(groupMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'sistemmenu': case prefix+'menusistem':{
                 textImg(sistemMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'gabutmenu':{
                 textImg(gabutMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'gamemenu': case prefix+'menugame':{
                 textImg(gameMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'downloadmenu': case prefix+'menudownload':{
             	if (!isPremium) return reply(mess.OnlyPrem)
                 textImg(downloadMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'searchmenu': case prefix+'menusearch':{
                 textImg(searchMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'stalkermenu': case prefix+'stalkmenu':{
                 textImg(stalkMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'randommenu': case prefix+'menurandom':{
                 textImg(randomMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'animemenu': case prefix+'menuanime': case prefix+'wibumenu':{
                 textImg(animeMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'toolsmenu': case prefix+'menutools':{
                 textImg(toolsMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'makermenu': case prefix+'menumaker':{
                 textImg(makerMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'othermenu': case prefix+'menuother':{
                 textImg(otherMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'nsfwmenu': case prefix+'hentaimenu': case prefix+'menunsfw': case prefix+'menuhentai':{
+            	if (!isNsfw) return reply('Nsfw group belum aktif')
                 textImg(hentaiMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'storagemenu': case prefix+'storage': case prefix+'menustorage':{
                 textImg(storageMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
             
                 break
             case prefix+'sewabot':{
                 textImg(sewabot(setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'newupdate':{
                 textImg(rahmanMenu(prefix, setting.botName))
+                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
-                break
+                break 
+            case prefix+'rules'{
+            	textImg(rules(setting.botName))
+             }
+                 break
 //------------------< Sticker / Tools >-------------------
             case prefix+'exif':{
 				if (!isOwner) return
@@ -1071,11 +1098,11 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 					break
 //------------------< Random >---------------------
 				case prefix+'quotes':{
-					data = fs.readFileSync("../lib/quote.json");
-					jsonData = JSON.parse(data);
-					randIndex = Math.floor(Math.random() * jsonData.length);
-					randKey = jsonData[randIndex];
-					randQuote = '' + randKey.quote + '\n\n_By: ' + randKey.by + '_'
+					let data = fs.readFileSync("./lib/quote.json");
+					let jsonData = JSON.parse(data);
+					let randIndex = Math.floor(Math.random() * jsonData.length);
+				    let randKey = jsonData[randIndex];
+					let randQuote = '' + randKey.quote + '\n\n_By: ' + randKey.by + '_'
 					textImg(randQuote)
 				}
 				break
@@ -1098,11 +1125,11 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				break
 				case prefix+'bucin':{
 					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-					data = fs.readFileSync("../lib/bucin.json");
-					jsonData = JSON.parse(data);
-					randIndex = Math.floor(Math.random() * jsonData.length);
-					randKey = jsonData[randIndex];
-					randBucin = '' + randKey.quote + '\n\n_By: ' + randKey.by + '_'
+					let data = fs.readFileSync("./lib/bucin.json");
+					let jsonData = JSON.parse(data);
+					let randIndex = Math.floor(Math.random() * jsonData.length);
+					let randKey = jsonData[randIndex];
+					let randBucin = '' + randKey.bucin + '\n\n_By: ' + randKey.by + '_'
 					textImg(randBucin)
 				}
 				break
@@ -1193,9 +1220,10 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 textImg(`Bot ini menggunakan sc : https://github.com/Rhmn8/botauliav1\n\nNote :\njangan dijual and dibeli!`)
                 break
             case prefix+'runtime':
-                textImg(`*「 RUNTIME BOT SKIMURA 」*\n\n${runtime(process.uptime())}`)
+                textImg(`*「 RUNTIME BOT SKIMURA 」*\n\n${runtime(process.uptime())}\n\n\nJangan lupa subscribe youtube saya :\nhttps://bit.ly/AuliaRahmanOfficialYT`)
                 break
             case prefix+'stats': 
+            case prefix+'botstatus':
             case prefix+'botstat':{
                 let totalchat = await aulia.chats.all()
 				let i = []
