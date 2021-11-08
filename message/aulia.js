@@ -523,7 +523,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break 
-            case prefix+'rules'{
+            case prefix+'rules':{
             	textImg(rules(setting.botName))
              }
                  break
