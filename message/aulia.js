@@ -1,5 +1,5 @@
 // --------> CREATED BY RAHMAN GANZ AND MASTAHKU <--------
-// -----< [ aqulz, ramlan id, mhankbarbar, nurutomo, aulia rahman ] >----- 
+// -----< [ aqulz, ramlan id, mhankbarbar, aulia rahman ] >----- 
 "use strict";
 const {
     WAConnection,
@@ -46,10 +46,6 @@ const { fbdl } = require("../lib/fbdl");
 const { fakeStatus, fakeToko } = require("./fakeReply");
 const game = require("../lib/game");
 const { addBadword, delBadword, isKasar, addCountKasar, isCountKasar, delCountKasar } = require("../lib/badword");
-
-// Plugins by rahman ganz
-
-
 
 // Database
 let pendaftar = JSON.parse(fs.readFileSync('./database/user.json'))
