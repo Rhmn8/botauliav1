@@ -930,7 +930,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 }
                 break
 //>>> TEXT PRO ME
-                case prefix+'neon':
+                case prefix+'neon':{
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
@@ -961,7 +961,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 limitAdd(sender, limit)
                 }
                     break
-                case prefix+'glitch': 
+                case prefix+'glitch':{
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
