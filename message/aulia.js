@@ -398,7 +398,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
         }       
         switch(command){
             case 'prefix': case 'cekprefix':{
-                textImg(`${prefix}`)
+                textImg(`BOT INI MENGGUNAKAN PREFIX : ${prefix}`)
             }
                 break
 
@@ -925,12 +925,19 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (!isPremium) return reply(mess.OnlyPrem)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} Rara`)
                 reply('[❗] Hirti Tihti Tai Anjg :v')
-                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/other/tahta?q=${args[1]}&apikey=${apikey}`), '', msg).catch(() => reply(mess.error.api))
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                 break
 //>>> TEXT PRO ME
                 case prefix+'neon':
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
+                reply(mess.wait)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`), '', msg).catch(() => reply(mess.error.api))
+                limitAdd(sender, limit)
+                } 
+                break
                 case prefix+'matrix':
                 case prefix+'blackpink':
                 case prefix+'halloween':
@@ -950,13 +957,21 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/textpro/${command.slice(1)}?apikey=${apikey}&text=${q}`), '', msg).catch(() => reply(mess.error.api))
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                     break
+                case prefix+'glitch': 
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
+                if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
+                reply(mess.wait)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker?text=halo&text2=hai&theme=glitch&apikey=Alphabot`, msg).catch(() => reply(mess.error.api))
+                limitAdd(sender, limit)
+                }
+                    break   
                 case prefix+'graffiti2':
                 case prefix+'phlogo':
-                case prefix+'glitch':                
                 case prefix+'graffiti3':
                 case prefix+'layeredtext':
                 case prefix+'vintage':
@@ -972,7 +987,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/textpro2/${command.slice(1)}?apikey=${apikey}&text1=${q.split("|")[0]}&text2=${q.split("|")[1]}`), '', msg).catch(() => reply(mess.error.api))
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                     break
@@ -995,7 +1010,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/photooxy/${command.slice(1)}?apikey=${apikey}&text=${q}`), '', msg).catch(() => reply(mess.error.api))
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1004,7 +1019,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/photooxy/pubglogo?apikey=${apikey}&text1=${q.split("|")[0]}&text2=${q.split("|")[1]}`), '', msg).catch(() => reply(mess.error.api))
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/game?text=halo&text2=hai&theme=pubg&apikey=Alphabot`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1766,7 +1781,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 if (!isNsfw) return reply('Nsfw group belum aktif')
                 if (!isGroup)return reply(mess.OnlyGrup)
                 reply(mess.wait)
-						sendFileFromUrl(from, `https://api-ramlan.herokuapp.com/api/nsfw/${command.slice(1)}?apikey=${apikey}`, 'Neh', msg)
+						sendFileFromUrl(from, `https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`, 'Neh', msg)
 						limitAdd(sender, limit)
 						}						
                       break
@@ -1781,7 +1796,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 if (!isNsfw) return reply('Nsfw group belum aktif')
                 if (!isGroup)return reply(mess.OnlyGrup)
                 reply(mess.wait)
-                axios.get(`https://api-ramlan.herokuapp.com/api/nsfw/${command.slice(1)}?apikey=${apikey}`)
+                axios.get(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`)
                 .then(({data}) => {
 						sendFileFromUrl(from, data.url, 'Neh', msg)
 						})
