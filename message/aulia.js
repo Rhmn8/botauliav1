@@ -925,7 +925,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (!isPremium) return reply(mess.OnlyPrem)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} Rara`)
                 reply('[❗] Hirti Tihti Tai Anjg :v')
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                 break
@@ -934,7 +934,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 } 
                 break
@@ -957,7 +957,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break
@@ -966,7 +966,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker?text=halo&text2=hai&theme=glitch&apikey=Alphabot`)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker?text=halo&text2=hai&theme=glitch&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break   
@@ -987,7 +987,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1010,7 +1010,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1019,7 +1019,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/game?text=halo&text2=hai&theme=pubg&apikey=Alphabot`)
+                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/game?text=halo&text2=hai&theme=pubg&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break
