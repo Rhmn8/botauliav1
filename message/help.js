@@ -1,8 +1,11 @@
-exports.newMenu = (ucapan, ownerName, botName, prefix, pendaftar, runtime, pushname, isOwner, isPremium, sisalimit, limitCount, glimit, gcount, expired, tanggal, jam) => {
+exports.newMenu = (ucapan, ownerName, botName, linkgcku, ytku, prefix, pendaftar, runtime, pushname, isOwner, isPremium, sisalimit, limitCount, glimit, gcount, expired, tanggal, jam) => {
     return `${ucapan.data.result} ${pushname}
 ╭┈─  ꕀ  ──  ꕀ  ──  ꕀ   ─┈  ꕀ   ╮
-              「 LINK GROUP BOT 」
-https://chat.whatsapp.com/IlcIDu7sDLbL9PGGQJ5TlX
+    「 LINK GC BOT 」
+${linkgcku}
+
+    「 SUBSCRIBE CHANNEL YT KU 」
+${ytku}
 ╰┈─  ꕀ  ──  ꕀ  ──  ꕀ   ─┈  ꕀ   ╯
 ─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇╮
 ˗ˏˋ˖🐰*${botName}* ָ ⋆ 𖥻
