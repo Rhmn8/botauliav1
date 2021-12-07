@@ -25,6 +25,8 @@
 ### BAHAN BOT <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
 * `TERMUX`
+* `VPS`
+* `RDP`
 
 ### CARA INSTALLNYA  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
 
@@ -43,6 +45,24 @@
 
 > Tinggal scan kode qr, done
 
+```
+
+## CARA INSTALL VPS
+
+```
+> apt install git
+
+> apt install nodejs
+
+> apt install ffmpeg
+
+> git clone https://github.com/Rhmn8/botauliav1
+
+> cd botauliav1
+
+> npm install
+
+> node main.js
 ```
 
 ## DONASI <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/coin.gif" width="29px">
