@@ -230,14 +230,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
           await aulia.updatePresence(from, Presence.composing)
     }
       
-        // runtime dibio bang🗿 by rahman ganz
-          let settingstatus = 0;
-          if (new Date() * 1 - settingstatus > 1000){
-             let uptime = process.uptime()
-             await aulia.setStatus(`aktif selama ${runtime(process.uptime())}`)
-             settingstatus = new Date() * 1;
-        }
-        
+
         // Antilink ig 
        if (isGroup && isAntilinkIg && !isOwner && !isGroupAdmins && isBotGroupAdmins){
         if (chats.includes("#izinmin")) return reply("#izinmin diterima")
