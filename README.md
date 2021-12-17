@@ -67,7 +67,7 @@
 
 ## DONASI <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/coin.gif" width="29px">
 
-* [`Donasi Gopay`](085821676621) 
+* [`Donasi Gopay`](https://mtsppkpkalteng.mwebs.id/Screenshot_20211217-203533_WhatsApp.jpg) 
 
 ## SOSIAL MEDIA ADMIN <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
