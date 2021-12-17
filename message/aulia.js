@@ -85,6 +85,7 @@ let autoketik = 'true'
 let {
     ownerNumber,
     pacarNumber,
+    nomorPenjual,
     limitCount,
     apikey,
     gamewaktu
@@ -94,7 +95,7 @@ moment.tz.setDefault("Asia/Jakarta").locale("id");
 
 module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
     try {
-        const { menu, newMenu, stickerMenu, ownerMenu, groupMenu, sistemMenu, gabutMenu, gameMenu, downloadMenu, searchMenu, stalkMenu, animeMenu, toolsMenu, makerMenu, otherMenu, hentaiMenu, storageMenu, listMenu, rahmanMenu } = require("./help");
+        const { menu, newMenu, stickerMenu, ownerMenu, groupMenu, sistemMenu, gabutMenu, gameMenu, downloadMenu, searchMenu, stalkMenu, animeMenu, toolsMenu, makerMenu, otherMenu, hentaiMenu, storageMenu, listMenu, rahmanMenu, beliPremium } = require("./help");
         const { sewabot } = require("./donate");
         const { rules } = require("./rules");
         const { type, quotedMsg, isGroup, isQuotedMsg, mentioned, sender, from, fromMe, pushname, chats, isBaileys } = msg
@@ -222,7 +223,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 
         // Mode
         if (mode === 'self'){
-            if (!fromMe) return
+            if (!fromMe && !isOwner) return
         }
         // auto ketik by rahman ganz
        if (autoketik){
@@ -230,10 +231,9 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
           await aulia.updatePresence(from, Presence.composing)
     }
       
-
         // Antilink ig 
        if (isGroup && isAntilinkIg && !isOwner && !isGroupAdmins && isBotGroupAdmins){
-        if (chats.includes("#izinmin")) return reply("#izinmin diterima")
+        if (chats.includes("#izinmin")) return reply(`#izinmin diterima`)
         if (chats.match(/(instagram.com\/)/gi)) {
         reply(`*「 ANTILINK INSTAGRAM 」*\n\nsepertinya kamu menggirimkan Link instagram , maaf kamu akan kami kick`)
            aulia.groupRemove(from, [sender])
@@ -242,7 +242,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 
         // Antilink YT
         if (isGroup && isAntilinkyt && !isOwner && !isGroupAdmins && isBotGroupAdmins){
-           if (chats.includes("#izinmin")) return reply("#izinmin diterima")
+           if (chats.includes("#izinmin")) return reply(`#izinmin diterima`)
            if (chats.match(/(youtu.be\/)/gi)) {
            reply(`*「 ANTILINK YOUTUBE 」*\n\nsepertinya kamu menggirimkan link youtube, maka kamu akan kami kick sorry ye`)
          }
@@ -250,6 +250,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 
         // Anti link
         if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
+            if (chats.includes("#izinmin")) return reply(`#izinmij diterima anda ga dikick`)
             if (chats.match(/(https:\/\/chat.whatsapp.com)/gi)) {
                 reply(`*「 GROUP LINK DETECTOR 」*\n\nSepertinya kamu mengirimkan link grup, maaf kamu akan di kick`)
                 aulia.groupRemove(from, [sender])
@@ -262,6 +263,14 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 aulia.groupRemove(from, [sender])
             }
         }
+        
+        // Auto Join Gc
+         if (isGroup && isAutojoin && !isOwner){
+         	if (!isUrl(args[1]) && !args[1].includes('chat.whatsapp.com')) return reply(mess.error.Iv)
+                let code = args[1].replace('https://chat.whatsapp.com/', '')
+                aulia.acceptInvite(code)
+                reply(`[SUKSES] berhasil join`)
+    }
         // Badword
         if (isGroup && isBadword && !isOwner && !isGroupAdmins){
             for (let kasar of badword){
@@ -516,6 +525,10 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             case prefix+'rules':{
             	textImg(rules(setting.botName))
              }
+                 break
+            case prefix+'sewaprem': case prefix+'sewapremium':{
+                textImg(beliPremium(setting.nomorPenjual))
+            }
                  break
 //------------------< Sticker / Tools >-------------------
             case prefix+'exif':{
@@ -2139,6 +2152,11 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     reply(`Sukses`)
                 }
                 break
+            case prefix+'shotdown':{ // by rahman ganz
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
+                   reply(`sukses shotdown termux!`)
+                }
+                    break
 //------------------< G R U P >-------------------
             case prefix+'delete':
 			case prefix+'del':
@@ -2329,6 +2347,19 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 mentions(txti, arr, true)
                 break
 //------------------< Enable / Disable >-------------------
+            case prefix+'autoketik': // by rahman ganz
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
+                if (args.length === 1) return reply(`pilih enable atau disable`)
+                if (args[1].toLowerCase() === 'enable'){
+                   autoketik = true
+                   reply(`sukses aktif autoketik`)
+             } else if (args[1].toLowerCase() === 'disable'){
+                   autoketik = false
+                   reply(`sukses nonaktif autoketik`)
+                } else {
+                   reply(`pilih enable atau disable`)
+                 }
+                 break
             case prefix+'antibadword':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
@@ -2386,7 +2417,6 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             case prefix+'mute':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 if (isMuted) return reply(`udah mute`)
                 mute.push(from)
                 fs.writeFileSync('./database/mute.json', JSON.stringify(mute))
