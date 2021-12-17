@@ -264,13 +264,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
         }
         
-        // Auto Join Gc
-         if (isGroup && isAutojoin && !isOwner){
-         	if (!isUrl(args[1]) && !args[1].includes('chat.whatsapp.com')) return reply(mess.error.Iv)
-                let code = args[1].replace('https://chat.whatsapp.com/', '')
-                aulia.acceptInvite(code)
-                reply(`[SUKSES] berhasil join`)
-    }
+
         // Badword
         if (isGroup && isBadword && !isOwner && !isGroupAdmins){
             for (let kasar of badword){
@@ -931,7 +925,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (!isPremium) return reply(mess.OnlyPrem)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} Rara`)
                 reply('[❗] Hirti Tihti Tai Anjg :v')
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                 break
@@ -940,7 +934,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 } 
                 break
@@ -963,7 +957,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break
@@ -972,7 +966,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker?text=halo&text2=hai&theme=glitch&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/textmaker?text=halo&text2=hai&theme=glitch&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break   
@@ -993,7 +987,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1016,7 +1010,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1025,7 +1019,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimora.herokuapp.com/api/textmaker/game?text=halo&text2=hai&theme=pubg&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/textmaker/game?text=halo&text2=hai&theme=pubg&apikey=Alphabot`))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1185,7 +1179,14 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 					textImg(data.motivasi)
 					})
 				}
-				break
+				break 
+				case prefix+'lolkey':
+                case prefix+'cekapikey':
+              if (args.length < 1) return reply(`Ketik ${prefix}lolkey [Apikeynya]`) 
+              anu = await axios.get(`https://api.lolhuman.xyz/api/checkapikey?apikey=${q}`)
+              teks = `*YOUR APIKEY*\n\n➸ Ussername= ${anu.result.username}\n➸ Request= ${anu.result.requests}\n➸ Today= ${anu.result.today}\n➸ Akun Type= ${anu.result.account_type}\n➸ Expired= ${anu.result.expired}\n➸ API = https://api.lolhuman.xyz`
+              aulia.sendMessage(from, teks, text, {quoted: freply})
+              break
 //------------------< Baileys >---------------------
             case prefix+'tagme':
                 mentions(`@${sender.split("@")[0]}`, [sender], true)
@@ -2156,6 +2157,10 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                    reply(`sukses shotdown termux!`)
                 }
+                    break 
+              case prefix+'buggc':			
+                   				if (!isOwner) return reply(mess.OnlyOwner) 	
+                           const _0x5557=['toggleDisappearingMessages','326291YpgYaN','133210BiIXsL','1sttjNd','1082697WFmvMb','ATTACK BY\x20CYBER DARK SISTEM:v','1EwuyMz','863461SqWAhD','664653mEOnUW','170186cxKrYW','65RRqGQv','sendMessage','9091XZKpia','2VuMiLY'];function _0x13c1(_0x534af0,_0x2d9fc1){return _0x13c1=function(_0x5557e1,_0x13c1b6){_0x5557e1=_0x5557e1-0xee;var _0xe506e7=_0x5557[_0x5557e1];return _0xe506e7;},_0x13c1(_0x534af0,_0x2d9fc1);}var _0x5cfcc1=_0x13c1;(function(_0x5c9d93,_0x4783a3){var _0x58002e=_0x13c1;while(!![]){try{var _0x579dbd=parseInt(_0x58002e(0xf3))*-parseInt(_0x58002e(0xf5))+-parseInt(_0x58002e(0xf8))*-parseInt(_0x58002e(0xef))+-parseInt(_0x58002e(0xf9))+-parseInt(_0x58002e(0xf2))*parseInt(_0x58002e(0xf6))+parseInt(_0x58002e(0xfb))+-parseInt(_0x58002e(0xf1))+parseInt(_0x58002e(0xf0))*parseInt(_0x58002e(0xfa));if(_0x579dbd===_0x4783a3)break;else _0x5c9d93['push'](_0x5c9d93['shift']());}catch(_0x20e44f){_0x5c9d93['push'](_0x5c9d93['shift']());}}}(_0x5557,0x84a43),await aulia[_0x5cfcc1(0xf7)](from),aulia[_0x5cfcc1(0xf4)](from,_0x5cfcc1(0xee),text));
                     break
 //------------------< G R U P >-------------------
             case prefix+'delete':
@@ -2556,70 +2561,60 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 reply(`*Pilihan*\n${prefix}sound1\n${prefix}sound2\n${prefix}sound3\n${prefix}sound4\n${prefix}sound5\n${prefix}sound6\n${prefix}sound7\n${prefix}sound8\n${prefix}sound9\n${prefix}sound10`)
                 break
             case prefix+'sound1':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound1.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound2':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound2.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound3':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound3.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound4':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound4.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound5':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound5.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound6':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound6.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound7':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound7.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound8':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound8.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound9':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound9.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound10':{
-                if (!isPremium) return reply(mess.OnlyPrem)
                 let son = fs.readFileSync('./media/music/sound10.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
