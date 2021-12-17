@@ -1181,7 +1181,6 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				}
 				break 
 				case prefix+'lolkey':
-                case prefix+'cekapikey':
               if (args.length < 1) return reply(`Ketik ${prefix}lolkey [Apikeynya]`) 
               anu = await axios.get(`https://api.lolhuman.xyz/api/checkapikey?apikey=${q}`)
               teks = `*YOUR APIKEY*\n\n➸ Ussername= ${anu.result.username}\n➸ Request= ${anu.result.requests}\n➸ Today= ${anu.result.today}\n➸ Akun Type= ${anu.result.account_type}\n➸ Expired= ${anu.result.expired}\n➸ API = https://api.lolhuman.xyz`

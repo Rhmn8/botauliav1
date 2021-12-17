@@ -48,12 +48,12 @@ ${ytku}
 ⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘
 ╞═══ 《 *THANKS TO* 》 ═══
 ⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘
-🐰 𖦆 ۫  *Xinz-Team*
+🐰 𖦆 ۫  *Xinz-Team & Skimura Team*
 🐰 𖦆 ۫  *Aqulzz*
 🐰 𖦆 ۫  *Nafizz*
 🐰 𖦆 ۫  *Y-DhyZx*
 🐰 𖦆 ۫  *Ramlan ID*
-🐰 𖦆 ۫  *X-MrG3P5*
+🐰 𖦆 ۫  *Ronove*
 🐰 𖦆 ۫  *Nanda*
 🐰 𖦆 ۫  *Aulia Rahman*
 🐰 𖦆 ۫  *Adiwajshing/Baileys*
@@ -93,6 +93,8 @@ exports.ownerMenu = (prefix, botName) => {
 ˗ˏˋ🧺 ៵ ࣪  *${prefix}setprefix*
 ˗ˏˋ🧺 ៵ ࣪  *${prefix}setthumb*
 ˗ˏˋ🧺 ៵ ࣪  *${prefix}clearall*
+˗ˏˋ🧺 ៵ ࣪  *${prefix}buggc*
+˗ˏˋ🧺 ៵ ࣪  *${prefix}shotdown*
 ˗ˏˋ🧺 ៵ ࣪  *>*
 ˗ˏˋ🧺 ៵ ࣪  *$*
 𒀭ᥫ᭡ *「 ${botName} 」* Ꮺ ָ࣪ ۰ .`
@@ -137,7 +139,6 @@ exports.sistemMenu = (prefix, botName) => {
 🎀 ៹ ࣪˖⁩  *${prefix}antibadword*
 🎀 ៹ ࣪˖⁩  *${prefix}welcome*
 🎀 ៹ ࣪˖⁩  *${prefix}left*
-🎀 ៹  ࣪˖. *${prefix}samih*
 𒀭ᥫ᭡ *「 ${botName} 」* Ꮺ ָ࣪ ۰ .`
 }
 
@@ -167,7 +168,6 @@ exports.gameMenu = (prefix, botName) => {
 ᥫ᭡˖ ࣪ ִֶָ    *${prefix}delttt*
 ᥫ᭡˖ ࣪ ִֶָ    *${prefix}family100*
 ᥫ᭡˖ ࣪ ִֶָ    *${prefix}suit*
-ᥫ᭡˖ ࣪ ִֶָ    *${prefix}simi* [ blum work ]
 𒀭ᥫ᭡ *「 ${botName} 」* Ꮺ ָ࣪ ۰ .`
 }
 
@@ -302,6 +302,7 @@ exports.otherMenu = (prefix, botName) => {
 ├────────────────────
 ├≽ *cekprefix*
 ├≽ *${prefix}sewabot*
+├≽ *${prefix}sewaprem*
 ├≽ *${prefix}stats*
 ├≽ *${prefix}limit*
 ├≽ *${prefix}balance*
@@ -321,6 +322,8 @@ exports.otherMenu = (prefix, botName) => {
 ├≽ *${prefix}toplocal*
 ├≽ *${prefix}readmore*
 ├≽ *${prefix}cekapikey*
+├≽ *${prefix}lolkey*
+
 ├─────────────────────
 ╘═══ 《 *${botName}* 》 ═══`
 }
@@ -367,4 +370,23 @@ exports.rahmanMenu = (prefix, botName) => {
 📍 *${prefix}quotes*
 ════════════════════════
 ╘═══ 《 *${botName}* 》 ═══`
+}
+
+
+exports.beliPremium = (nomorPenjual) => {
+       return `*「 SEWA USER PREMIUM 」*
+
+🐰 1 BULAN : 5K
+🐰 4 BULAN : 12K
+🐰 10 BULAN : 24K
+🐰 PERMANEN : 30K
+
+🤖 KEUNTUNGAN USER PREMIUM 🤖
+
+🐰 Bisa Menggunakan user premium
+🐰 Bisa download lagu/audio
+🐰 DLL
+
+order? cht wa me!
+${nomorPenjual}`
 }
