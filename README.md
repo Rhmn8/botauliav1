@@ -28,7 +28,7 @@
 * `VPS`
 * `RDP`
 
-### DOWNLOAD TERMUX DI? <img src="https://github.comhttps://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
+### DOWNLOAD TERMUX DI? <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
 [`F-DROID TERMUX`](https://f-droid.org/repo/com.termux_116.apk)
 
