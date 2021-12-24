@@ -28,12 +28,20 @@
 * `VPS`
 * `RDP`
 
+### DOWNLOAD TERMUX DI? <img src="https://github.comhttps://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
+
+[`F-DROID TERMUX`](https://f-droid.org/repo/com.termux_116.apk)
+
+
 ### CARA INSTALLNYA  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
 
 ```bash
 > pkg install git
 
 > pkg install nodejs
+kalau ga bisa diinstall nodejsnya
+
+> pkg upgrade nodejs
 
 > git clone https://github.com/Rhmn8/botauliav1
 
