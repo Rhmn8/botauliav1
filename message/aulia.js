@@ -1,5 +1,7 @@
-// --------> CREATED BY RAHMAN GANZ AND MASTAHKU <--------
-// -----< [ aqulz, ramlan id, mhankbarbar, aulia rahman ] >----- 
+// author : rahman ganz X skimura team
+// sc ori : aqulz, ramlan id
+// thanks to : Aulia rahman (recode), Aqulz (sc ori), Ramlan id (sc ori), Mhankbarbar, Ronove, Y-DhyZx, Nanda, Adiwajshing/baileys
+// jangan diubah ubah kalau ketahuan ubah itunya ga gw update lagi!
 "use strict";
 const {
     WAConnection,
@@ -88,7 +90,7 @@ let {
     nomorPenjual,
     limitCount,
     apikey,
-    gamewaktu
+    gamewaktu,
 } = setting
 
 moment.tz.setDefault("Asia/Jakarta").locale("id");
@@ -1182,8 +1184,8 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				break 
 				case prefix+'lolkey':
               if (args.length < 1) return reply(`Ketik ${prefix}lolkey [Apikeynya]`) 
-              anu = await axios.get(`https://api.lolhuman.xyz/api/checkapikey?apikey=${q}`)
-              teks = `*YOUR APIKEY*\n\n➸ Ussername= ${anu.result.username}\n➸ Request= ${anu.result.requests}\n➸ Today= ${anu.result.today}\n➸ Akun Type= ${anu.result.account_type}\n➸ Expired= ${anu.result.expired}\n➸ API = https://api.lolhuman.xyz`
+              let anu = await axios.get(`https://api.lolhuman.xyz/api/checkapikey?apikey=${q}`)
+              let teks = `*YOUR APIKEY*\n\n➸ Ussername= ${anu.result.username}\n➸ Request= ${anu.result.requests}\n➸ Today= ${anu.result.today}\n➸ Akun Type= ${anu.result.account_type}\n➸ Expired= ${anu.result.expired}\n➸ API = https://api.lolhuman.xyz`
               aulia.sendMessage(from, teks, text, {quoted: freply})
               break
 //------------------< Baileys >---------------------
@@ -2619,6 +2621,27 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 limitAdd(sender, limit)
                 }
                 break
+//***************** RESPON CHAT *****************//
+            if (chats.includes('hai')){
+                reply(`hai juga kak`) // kalau yg ini error ga bisa respon hps aja ya kak
+             }
+            if (chats.includes('apa kabar')){
+                reply(`baik kak`) // kalau yg ini error ga bisa respon hps aja yg itu ya kak
+             }
+
+            // respon chat lainnya
+
+             case 'hello': case 'hallo':{
+                 reply(`hlo jg kak🤗`)
+             }
+             break
+             case 'assalamualaikum':{
+             	reply(`waalaikumsalam kak`)
+             }
+             break
+        
+        // mo nambah cht respon lgi? tambah lh sendiri tpi ingat kalau error jangan salahkan sc ini!
+//***************** BAILEYS ERROR | JAN DI UBAH UBAH NANTI ERROR *****************//
         }
     } catch (err) {
         console.log(color('[ERROR]', 'red'), err)
