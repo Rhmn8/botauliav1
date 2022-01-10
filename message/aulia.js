@@ -1199,7 +1199,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 aulia.sendContact(from, q.split("|")[0], q.split("|")[1], msg)
                 break
             case prefix+'hidetag':{
-                if (!isPremium) return reply(`Kamu bukan user premium, kirim perintah *${prefix}daftarprem* untuk membeli premium`)
+                if (!isPremium) return reply(`Kamu bukan user premium, kirim perintah *${prefix}sewaprem* untuk membeli premium`)
                 if (args.length < 2) return reply(`Masukkan text`)
                 let arr = [];
                 for (let i of groupMembers){
@@ -1841,7 +1841,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 break
             case prefix+'cekprem':
             case prefix+'cekpremium':
-                if (!isPremium) return reply(`Kamu bukan user premium, kirim perintah *${prefix}daftarprem* untuk membeli premium`)
+                if (!isPremium) return reply(`Kamu bukan user premium, kirim perintah *${prefix}sewaprem* untuk membeli premium`)
                 let cekvip = ms(_prem.getPremiumExpired(sender, premium) - Date.now())
                 let premiumnya = `*Expire :* ${cekvip.days} day(s) ${cekvip.hours} hour(s) ${cekvip.minutes} minute(s)`
                 reply(premiumnya)
