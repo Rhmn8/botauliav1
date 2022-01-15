@@ -30,7 +30,7 @@
 
 ### DOWNLOAD TERMUX DI? <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
-[`F-DROID TERMUX`](https://f-droid.org/repo/com.termux_116.apk)
+[`F-DROID TERMUX`](https://f-droid.org/repo/com.termux_118.apk)
 
 
 ### CARA INSTALLNYA  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
