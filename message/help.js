@@ -1,13 +1,5 @@
 exports.newMenu = (ucapan, ownerName, botName, linkgcku, ytku, prefix, pendaftar, runtime, pushname, isOwner, isPremium, sisalimit, limitCount, glimit, gcount, expired, tanggal, jam) => {
     return `${ucapan.data.result} ${pushname}
-╭┈─  ꕀ  ──  ꕀ  ──  ꕀ   ─┈  ꕀ   ╮
-    「 LINK GC BOT 」
-${linkgcku}
-
-    「 SUBSCRIBE CHANNEL YT KU 」
-${ytku}
-╰┈─  ꕀ  ──  ꕀ  ──  ꕀ   ─┈  ꕀ   ╯
-─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇─̇─̇࿉۟࣪࣪─̇╮
 ˗ˏˋ˖🐰*${botName}* ָ ⋆ 𖥻
 ▬▭▬▭▬▭▬▭▬▭▬▭▬ 
 ˗ˏˋ˖🧺 *Creator : ${ownerName}*
