@@ -1,4 +1,4 @@
-exports.newMenu = (ucapan, ownerName, botName, linkgcku, ytku, prefix, pendaftar, runtime, pushname, isOwner, isPremium, sisalimit, limitCount, glimit, gcount, expired, tanggal, jam) => {
+exports.newMenu = (ucapan, ownerName, botName, prefix, pendaftar, runtime, pushname, isOwner, isPremium, sisalimit, limitCount, glimit, gcount, expired, tanggal, jam) => {
     return `${ucapan.data.result} ${pushname}
 ˗ˏˋ˖🐰*${botName}* ָ ⋆ 𖥻
 ▬▭▬▭▬▭▬▭▬▭▬▭▬ 
