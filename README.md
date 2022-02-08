@@ -79,7 +79,7 @@ kalau ga bisa diinstall nodejsnya
 
 ## SOSIAL MEDIA ADMIN <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
-* [`Youtube Admin`](https://youtube.com/c/AuliaRahmanOfficialYT123)
+* [`Youtube Admin`](https://youtube.com/c/AuliaRahmanOfficial123)
 
 * [`Instagram Admin`](https://instagram.com/rahman_nayyers)
 
