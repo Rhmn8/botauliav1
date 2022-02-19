@@ -83,7 +83,6 @@ let mode = 'public'
 
 // auto ketik
 let autoketik = true
-let autoketik = false
 
 let {
     ownerNumber,
@@ -2157,7 +2156,6 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 break
             case prefix+'shotdown':{ // by rahman ganz
                 if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
-                   console.log(color('[SUKSES SHUTDOWN TERMUX]', 'red', err)
                    reply(`sukses shotdown termux!`)
                 }
                     break 
