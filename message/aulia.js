@@ -405,7 +405,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'help': case prefix+'menu':{
-                axios.get(`https://api-ramlan.herokuapp.com/api/ucapan?timeZone=Asia/Jakarta`)
+                axios.get(`https://time.siswadi.com/Asia/Jakarta`)
                 .then(async(ucapan) => {
                 let sisalimit = getLimit(sender, limitCount, limit)
                 let sisaGlimit = cekGLimit(sender, gcount, glimit)
