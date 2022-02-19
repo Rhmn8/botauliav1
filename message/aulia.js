@@ -82,7 +82,7 @@ let prefa = 'anjing'
 let mode = 'public'
 
 // auto ketik
-let autoketik = true
+let autoketik = 'true'
 
 let {
     ownerNumber,
