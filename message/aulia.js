@@ -232,6 +232,10 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
           if (autoketik == true) return
           await aulia.updatePresence(from, Presence.composing)
     }
+        if (autoketik){
+          if (autoketik == false) return
+          await aulia.updatePresence(from, Presence.composing)
+    }
       
         // Antilink ig 
        if (isGroup && isAntilinkIg && !isOwner && !isGroupAdmins && isBotGroupAdmins){
@@ -405,8 +409,6 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'help': case prefix+'menu':{
-                axios.get(`https://time.siswadi.com/Asia/Jakarta`)
-                .then(async(ucapan) => {
                 let sisalimit = getLimit(sender, limitCount, limit)
                 let sisaGlimit = cekGLimit(sender, gcount, glimit)
                 let cekvip = ms(_prem.getPremiumExpired(sender, premium) - Date.now())
@@ -420,7 +422,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                     }
                 }
                 //let expiredPrem = `${cekvip.days} day(s) ${cekvip.hours} hour(s) ${cekvip.minutes} minute(s)`
-                fakeimage(newMenu(ucapan, setting.ownerName, setting.botName, prefix, pendaftar, runtime(process.uptime()), pushname, isOwner, isPremium, sisalimit, limitCount, sisaGlimit, gcount, expiredPrem(), tanggal, jam))
+                fakeimage(newMenu(setting.ownerName, setting.botName, prefix, pendaftar, runtime(process.uptime()), pushname, isOwner, isPremium, sisalimit, limitCount, sisaGlimit, gcount, expiredPrem(), tanggal, jam))
             })
             }
                 break
