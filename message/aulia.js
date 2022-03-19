@@ -2156,7 +2156,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     reply(`Sukses`)
                 }
                 break
-            case prefix+'shotdown':{ // by rahman ganz
+            case prefix+'shutdown':{ // by rahman ganz
                 if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                    reply(`sukses shotdown termux!`)
                 }
