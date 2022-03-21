@@ -1,7 +1,6 @@
-// author : rahman ganz X skimura team
-// sc ori : aqulz, ramlan id
-// thanks to : Aulia rahman (recode), Aqulz (sc ori), Ramlan id (sc ori), Mhankbarbar, Ronove, Y-DhyZx, Nanda, Adiwajshing/baileys
-// jangan diubah ubah kalau ketahuan ubah itunya ga gw update lagi!
+// Thanks Too : Ramlan ID, Aqulz, Mhankbarbar, Rahman Whatsapp, Adiwajshing/Bailleys, And Your
+// Jangan Di Ubah² Di Atas Itu! 
+// Kalau Diubah² Ga saya Up lagi!
 "use strict";
 const {
     WAConnection,
@@ -90,16 +89,15 @@ let {
     nomorPenjual,
     limitCount,
     apikey,
-    gamewaktu,
+    gamewaktu
 } = setting
+
 
 moment.tz.setDefault("Asia/Jakarta").locale("id");
 
 module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
     try {
-        const { menu, newMenu, stickerMenu, ownerMenu, groupMenu, sistemMenu, gabutMenu, gameMenu, downloadMenu, searchMenu, stalkMenu, animeMenu, toolsMenu, makerMenu, otherMenu, hentaiMenu, storageMenu, listMenu, rahmanMenu, beliPremium } = require("./help");
-        const { sewabot } = require("./donate");
-        const { rules } = require("./rules");
+        const { menu, newMenu, stickerMenu, ownerMenu, groupMenu, sistemMenu, gabutMenu, gameMenu, downloadMenu, searchMenu, stalkMenu, randomMenu, animeMenu, toolsMenu, makerMenu, otherMenu, hentaiMenu, storageMenu, rahmanMenu, beliPremium } = require("./help");
         const { type, quotedMsg, isGroup, isQuotedMsg, mentioned, sender, from, fromMe, pushname, chats, isBaileys } = msg
         if (isBaileys) return
         const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
@@ -131,15 +129,15 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 
         const isOwner = ownerNumber.includes(sender)
         const isPacar = pacarNumber.includes(sender)
-        const isPremium = isOwner && isPacar ? true : _prem.checkPremiumUser(sender, premium)
+        const isPremium = isOwner ? true : _prem.checkPremiumUser(sender, premium)
 	    const isBan = cekBannedUser(sender, ban)
         const isAfkOn = afk.checkAfkUser(sender, _afk)
         const isAntiLink = isGroup ? antilink.includes(from) : false
         const isAntiWame = isGroup ? antiwame.includes(from) : false
         const isAntilinkIg = isGroup ? antilinkig.includes(from) : false
         const isAntilinkyt = isGroup ? antilinkyt.includes(from) : false
-        const isWelcome = isGroup ? welcome.includes(from) : true
-        const isLeft = isGroup ? left.includes(from) : true
+        const isWelcome = isGroup ? welcome.includes(from) : false
+        const isLeft = isGroup ? left.includes(from) : false
         const isNsfw = isGroup ? nsfw.includes(from) : false
         const isUser = pendaftar.includes(sender)
         const isBadword = isGroup ? grupbadword.includes(from) : false
@@ -225,8 +223,24 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 
         // Mode
         if (mode === 'self'){
-            if (!fromMe && !isOwner) return
+            if (!fromMe) return
         }
+
+        // Anti link
+        if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
+            if (chats.match(/(https:\/\/chat.whatsapp.com)/gi)) {
+                reply(`*「 GROUP LINK DETECTOR 」*\n\nSepertinya kamu mengirimkan link grup, maaf kamu akan di kick`)
+                aulia.groupRemove(from, [sender])
+            }
+        }
+        // Anti wame
+        if (isGroup && isAntiWame && !isOwner && !isGroupAdmins && isBotGroupAdmins){
+            if (chats.match(/(wa.me\/)/gi)) {
+                reply(`*「 NOMOR LINK DETECTOR 」*\n\nSepertinya kamu mengirimkan link nomor, maaf kamu akan di kick`)
+                aulia.groupRemove(from, [sender])
+            }
+        }
+        
         // auto ketik by rahman ganz
        if (autoketik){
           if (autoketik == true) return
@@ -253,23 +267,6 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
            reply(`*「 ANTILINK YOUTUBE 」*\n\nsepertinya kamu menggirimkan link youtube, maka kamu akan kami kick sorry ye`)
          }
     }
-
-        // Anti link
-        if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
-            if (chats.includes("#izinmin")) return reply(`#izinmij diterima anda ga dikick`)
-            if (chats.match(/(https:\/\/chat.whatsapp.com)/gi)) {
-                reply(`*「 GROUP LINK DETECTOR 」*\n\nSepertinya kamu mengirimkan link grup, maaf kamu akan di kick`)
-                aulia.groupRemove(from, [sender])
-            }
-        }
-        // Anti wame
-        if (isGroup && isAntiWame && !isOwner && !isGroupAdmins && isBotGroupAdmins){
-            if (chats.match(/(wa.me\/)/gi)) {
-                reply(`*「 NOMOR LINK DETECTOR 」*\n\nSepertinya kamu mengirimkan link nomor, maaf kamu akan di kick`)
-                aulia.groupRemove(from, [sender])
-            }
-        }
-        
 
         // Badword
         if (isGroup && isBadword && !isOwner && !isGroupAdmins){
@@ -409,6 +406,8 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'help': case prefix+'menu':{
+                axios.get(`https://api-ramlan.herokuapp.com/api/ucapan?timeZone=Asia/Jakarta`)
+                .then(async(ucapan) => {
                 let sisalimit = getLimit(sender, limitCount, limit)
                 let sisaGlimit = cekGLimit(sender, gcount, glimit)
                 let cekvip = ms(_prem.getPremiumExpired(sender, premium) - Date.now())
@@ -422,99 +421,75 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                     }
                 }
                 //let expiredPrem = `${cekvip.days} day(s) ${cekvip.hours} hour(s) ${cekvip.minutes} minute(s)`
-                fakeimage(newMenu(setting.ownerName, setting.botName, prefix, pendaftar, runtime(process.uptime()), pushname, isOwner, isPremium, sisalimit, limitCount, sisaGlimit, gcount, expiredPrem(), tanggal, jam))
+                fakeimage(newMenu(ucapan, setting.ownerName, setting.botName, prefix, pendaftar, runtime(process.uptime()), pushname, isOwner, isPremium, sisalimit, limitCount, sisaGlimit, gcount, expiredPrem(), tanggal, jam))
             })
             }
                 break
             case prefix+'stickermenu': case prefix+'stikermenu': case prefix+'menusticker': case prefix+'menusticker':{
-                textImg(stickerMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
+                textImg(stickerMenu(prefix))
             }
                 break
             case prefix+'creatormenu': case prefix+'ownermenu':{
-            	if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 textImg(ownerMenu(prefix, setting.botName))
             }
                 break
             case prefix+'groupmenu': case prefix+'grupmenu':{
-            	if (!isGroup) return reply(mess.OnlyGrup)
                 textImg(groupMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
-                }
+            }
                 break
             case prefix+'sistemmenu': case prefix+'menusistem':{
                 textImg(sistemMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'gabutmenu':{
                 textImg(gabutMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'gamemenu': case prefix+'menugame':{
                 textImg(gameMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'downloadmenu': case prefix+'menudownload':{
-            	if (!isPremium) return reply(mess.OnlyPrem)
+                if (!isPremium) return reply(mess.OnlyPrem)
                 textImg(downloadMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'searchmenu': case prefix+'menusearch':{
                 textImg(searchMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'stalkermenu': case prefix+'stalkmenu':{
                 textImg(stalkMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'randommenu': case prefix+'menurandom':{
                 textImg(randomMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'animemenu': case prefix+'menuanime': case prefix+'wibumenu':{
                 textImg(animeMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'toolsmenu': case prefix+'menutools':{
                 textImg(toolsMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'makermenu': case prefix+'menumaker':{
                 textImg(makerMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'othermenu': case prefix+'menuother':{
                 textImg(otherMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'nsfwmenu': case prefix+'hentaimenu': case prefix+'menunsfw': case prefix+'menuhentai':{
-            	if (!isNsfw) return reply('Nsfw group belum aktif')
                 textImg(hentaiMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
                 break
             case prefix+'storagemenu': case prefix+'storage': case prefix+'menustorage':{
                 textImg(storageMenu(prefix, setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
             }
-            
-                break
-            case prefix+'sewabot':{
-                textImg(sewabot(setting.botName))
-                aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
-            }
-                break
+                break 
             case prefix+'newupdate':{
                 textImg(rahmanMenu(prefix, setting.botName))
                 aulia.sendMessage(from, `jangan lupa subscribe channel YouTube saya\n\nhttps://bit.ly/AuliaRahmanOfficialYT`, text)
@@ -542,7 +517,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             case prefix+'s':
             case prefix+'stickergif':
             case prefix+'sgif':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (isImage || isQuotedImage) {
                     let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : msg
                     let media = await aulia.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
@@ -681,7 +656,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             case prefix+'tomp4':
             case prefix+'toimg':
             case prefix+'tomedia':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 				if (!isQuotedSticker) return reply('Reply stiker nya')
                 let encmedia = JSON.parse(JSON.stringify(msg).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 				let media = await aulia.downloadAndSaveMediaMessage(encmedia)
@@ -722,7 +697,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 }
 				break
             case prefix+'attp':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}attp* teks`)
                 let ane = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
                 fs.writeFileSync('./sticker/attp.webp', ane)
@@ -735,7 +710,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'tinyurl':
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan :\n*${prefix}tinyurl link`)
                 if (!isUrl(args[1])) return reply(`Masukkan link yang benar`)
                 axios.get(`https://tinyurl.com/api-create.php?url=${args[1]}`)
@@ -808,7 +783,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 reply(`*Pilihan*\n${prefix}nuliskiri\n${prefix}nuliskanan\n${prefix}foliokiri\n${prefix}foliokanan`)
                 break
             case prefix+'nuliskiri':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}nuliskiri* teks`)
                 reply(mess.wait)
                 const tulisan = body.slice(11)
@@ -837,7 +812,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'nuliskanan':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}nuliskanan* teks`)
                 reply(mess.wait)
                 const tulisan = body.slice(12)
@@ -866,7 +841,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'foliokiri':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}foliokiri* teks`)
                 reply(mess.wait)
                 const tulisan = body.slice(11)
@@ -895,7 +870,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'foliokanan':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}foliokanan* teks`)
                 reply(mess.wait)
                 const tulisan = body.slice(12)
@@ -926,22 +901,15 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             
 //------------------< Text Marker >-------------------
             case prefix+'harta': case prefix+'hartatahta': case prefix+'tahta':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} Rara`)
                 reply('[❗] Hirti Tihti Tai Anjg :v')
-                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/other/tahta?q=${args[1]}&apikey=${apikey}`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                 break
 //>>> TEXT PRO ME
-                case prefix+'neon':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-                if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
-                reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`))
-                limitAdd(sender, limit)
-                } 
-                break
+                case prefix+'neon':
                 case prefix+'matrix':
                 case prefix+'blackpink':
                 case prefix+'halloween':
@@ -958,24 +926,16 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 case prefix+'sandwrite':
                 case prefix+'3dwater':
                 case prefix+'graffiti':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/textmaker/metallic?text=Alphabot&theme=neon&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/textpro/${command.slice(1)}?apikey=${apikey}&text=${q}`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                     break
-                case prefix+'glitch':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-                if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
-                if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
-                reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/textmaker?text=halo&text2=hai&theme=glitch&apikey=Alphabot`))
-                limitAdd(sender, limit)
-                }
-                    break   
                 case prefix+'graffiti2':
                 case prefix+'phlogo':
+                case prefix+'glitch':                
                 case prefix+'graffiti3':
                 case prefix+'layeredtext':
                 case prefix+'vintage':
@@ -987,11 +947,11 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 case prefix+'lionlogo':
                 case prefix+'wolflogo':
                 case prefix+'ninjalogo':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/textpro2/${command.slice(1)}?apikey=${apikey}&text1=${q.split("|")[0]}&text2=${q.split("|")[1]}`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1011,19 +971,19 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 case prefix+'lovetext':
                 case prefix+'burnpaper':
                 case prefix+'lovemessage':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text\n\nContoh : ${command} aulia`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/photooxy/${command.slice(1)}?apikey=${apikey}&text=${q}`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                     break
                 case prefix+'pubglogo':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 if (!q.includes("|")) return reply(`Penggunaan ${command} text1|text2\n\nContoh : ${command} Ramlan|Rara`)
                 reply(mess.wait)
-                aulia.sendImage(from, await getBuffer(`https://skimura.herokuapp.com/api/textmaker/game?text=halo&text2=hai&theme=pubg&apikey=Alphabot`))
+                aulia.sendImage(from, await getBuffer(`https://api-ramlan.herokuapp.com/api/photooxy/pubglogo?apikey=${apikey}&text1=${q.split("|")[0]}&text2=${q.split("|")[1]}`), '', msg).catch(() => reply(mess.error.api))
                 limitAdd(sender, limit)
                 }
                     break
@@ -1095,14 +1055,14 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 					break
 
 				case prefix+'truth':
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 					const trut = ['Pernah suka sama siapa aja? berapa lama?', 'Kalau boleh atau kalau mau, di gc/luar gc siapa yang akan kamu jadikan sahabat?(boleh beda/sma jenis)', 'apa ketakutan terbesar kamu?', 'pernah suka sama orang dan merasa orang itu suka sama kamu juga?', 'Siapa nama mantan pacar teman mu yang pernah kamu sukai diam diam?', 'pernah gak nyuri uang nyokap atau bokap? Alesanya?', 'hal yang bikin seneng pas lu lagi sedih apa', 'pernah cinta bertepuk sebelah tangan? kalo pernah sama siapa? rasanya gimana brou?', 'pernah jadi selingkuhan orang?', 'hal yang paling ditakutin', 'siapa orang yang paling berpengaruh kepada kehidupanmu', 'hal membanggakan apa yang kamu dapatkan di tahun ini', 'siapa orang yang bisa membuatmu sange', 'siapa orang yang pernah buatmu sange', '(bgi yg muslim) pernah ga solat seharian?', 'Siapa yang paling mendekati tipe pasangan idealmu di sini', 'suka mabar(main bareng)sama siapa?', 'pernah nolak orang? alasannya kenapa?', 'Sebutkan kejadian yang bikin kamu sakit hati yang masih di inget', 'pencapaian yang udah didapet apa aja ditahun ini?', 'kebiasaan terburuk lo pas di sekolah apa?']
 					const ttrth = trut[Math.floor(Math.random() * trut.length)]
 					aulia.sendImage(from, await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`), 'Truth\n\n' + ttrth, msg)
 					break
 
 				case prefix+'dare':
-                if (!isPremium) return reply(mess.OnlyPrem)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 					const dare = ['Kirim pesan ke mantan kamu dan bilang "aku masih suka sama kamu', 'telfon crush/pacar sekarang dan ss ke pemain', 'pap ke salah satu anggota grup', 'Bilang "KAMU CANTIK BANGET NGGAK BOHONG" ke cowo', 'ss recent call whatsapp', 'drop emot 🤥 setiap ngetik di gc/pc selama 1 hari', 'kirim voice note bilang can i call u baby?', 'drop kutipan lagu/quote, terus tag member yang cocok buat kutipan itu', 'pake foto sule sampe 3 hari', 'ketik pake bahasa daerah 24 jam', 'ganti nama menjadi "gue anak lucinta luna" selama 5 jam', 'chat ke kontak wa urutan sesuai %batre kamu, terus bilang ke dia "i lucky to hv you', 'prank chat mantan dan bilang " i love u, pgn balikan', 'record voice baca surah al-kautsar', 'bilang "i hv crush on you, mau jadi pacarku gak?" ke lawan jenis yang terakhir bgt kamu chat (serah di wa/tele), tunggu dia bales, kalo udah ss drop ke sini', 'sebutkan tipe pacar mu!', 'snap/post foto pacar/crush', 'teriak gajelas lalu kirim pake vn kesini', 'pap mukamu lalu kirim ke salah satu temanmu', 'kirim fotomu dengan caption, aku anak pungut', 'teriak pake kata kasar sambil vn trus kirim kesini', 'teriak " anjimm gabutt anjimmm " di depan rumah mu', 'ganti nama jadi " BOWO " selama 24 jam', 'Pura pura kerasukan, contoh : kerasukan maung, kerasukan belalang, kerasukan kulkas, dll']
 					const der = dare[Math.floor(Math.random() * dare.length)]
 					aulia.sendImage(from, await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`), 'Dare\n\n' + der , msg)
@@ -1114,17 +1074,17 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 					break
 //------------------< Random >---------------------
 				case prefix+'quotes':{
-					let data = fs.readFileSync("./lib/quote.json");
-					let jsonData = JSON.parse(data);
-					let randIndex = Math.floor(Math.random() * jsonData.length);
-				    let randKey = jsonData[randIndex];
-					let randQuote = '' + randKey.quote + '\n\n_By: ' + randKey.by + '_'
+					data = fs.readFileSync("../lib/quote.json");
+					jsonData = JSON.parse(data);
+					randIndex = Math.floor(Math.random() * jsonData.length);
+					randKey = jsonData[randIndex];
+					randQuote = '' + randKey.quote + '\n\n_By: ' + randKey.by + '_'
 					textImg(randQuote)
 				}
 				break
 				case prefix+'darkjokes': case prefix+'darkjoke': case prefix+'jokes': case prefix+'dark':{
-					if (!isPremium) return reply(mess.OnlyPrem)
-					axios.get(`https://www.google.com/amp/s/id.pinterest.com/amp/ky0722/dark-jokes/`)
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+					axios.get(`https://api-ramlan.herokuapp.com/api/random/darkjoke?apikey=${apikey}`)
 					.then(({data}) => {
 					sendFileFromUrl(from, data.urlimage, '', msg)
 					limitAdd(sender, limit)
@@ -1132,7 +1092,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				}
 				break
 				case prefix+'pantun':{
-					if (!isPremium) return reply(mess.OnlyPrem)
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 					axios.get(`https://api-ramlan.herokuapp.com/api/random/pantun?apikey=${apikey}`)
 					.then(({data}) => {
 					textImg(data.pantun)
@@ -1140,17 +1100,15 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				}
 				break
 				case prefix+'bucin':{
-					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-					let data = fs.readFileSync("./lib/bucin.json");
-					let jsonData = JSON.parse(data);
-					let randIndex = Math.floor(Math.random() * jsonData.length);
-					let randKey = jsonData[randIndex];
-					let randBucin = '' + randKey.bucin + '\n\n_By: ' + randKey.by + '_'
-					textImg(randBucin)
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+					axios.get(`https://api-ramlan.herokuapp.com/api/random/bucin?apikey=${apikey}`)
+					.then(({data}) => {
+					textImg(data.bucin)
+					})
 				}
 				break
 				case prefix+'cehor': case prefix+'ceritahoror':{
-					if (!isPremium) return reply(mess.OnlyPrem)
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 					axios.get(`https://api-ramlan.herokuapp.com/api/random/cehor?apikey=${apikey}`)
 					.then(({data}) => {
 					let { judul, thumb, desc, story } = data
@@ -1161,7 +1119,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				}
 				break
 				case prefix+'fakta':{
-					if (!isPremium) return reply(mess.OnlyPrem)
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 					axios.get(`https://api-ramlan.herokuapp.com/api/random/fakta?apikey=${apikey}`)
 					.then(({data}) => {
 					textImg(data.fakta)
@@ -1169,7 +1127,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				}
 				break
 				case prefix+'katabijak':{
-					if (!isPremium) return reply(mess.OnlyPrem)
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 					axios.get(`https://api-ramlan.herokuapp.com/api/random/katabijak?apikey=${apikey}`)
 					.then(({data}) => {
 					textImg(data.katabijak)
@@ -1177,19 +1135,13 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
 				}
 				break
 				case prefix+'motivasi':{
-					if (!isPremium) return reply(mess.OnlyPrem)
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 					axios.get(`https://api-ramlan.herokuapp.com/api/random/motivasi?apikey=${apikey}`)
 					.then(({data}) => {
 					textImg(data.motivasi)
 					})
 				}
-				break 
-				case prefix+'lolkey':
-              if (args.length < 1) return reply(`Ketik ${prefix}lolkey [Apikeynya]`) 
-              let anu = await axios.get(`https://api.lolhuman.xyz/api/checkapikey?apikey=${q}`)
-              let teks = `*YOUR APIKEY*\n\n➸ Ussername= ${anu.result.username}\n➸ Request= ${anu.result.requests}\n➸ Today= ${anu.result.today}\n➸ Akun Type= ${anu.result.account_type}\n➸ Expired= ${anu.result.expired}\n➸ API = https://api.lolhuman.xyz`
-              aulia.sendMessage(from, teks, text, {quoted: freply})
-              break
+				break
 //------------------< Baileys >---------------------
             case prefix+'tagme':
                 mentions(`@${sender.split("@")[0]}`, [sender], true)
@@ -1223,11 +1175,6 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 aulia.sendContact(from, ownerNumber.split("@")[0], setting.ownerName, msg)
                 .then((res) => aulia.sendMessage(from, 'Nih kontak ownerku', text, {quoted: res}))
                 break
-            case prefix+'ownerdoi':
-            case prefix+'pacarkuh':
-                 aulia.sendContact(from, pacarNumber.split("@")[0], setting.pacarName, msg)
-                 .then((res) => aulia.sendMessage(from, 'Nih kontak pacarku tapi jangan diambil', text, {quoted:res}))
-                break
             case prefix+'ping':
             case prefix+'speed':{
                 let timestamp = speed();
@@ -1239,13 +1186,12 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 textImg(setting.txtDonasi)
                 break
             case prefix+'sourcecode': case prefix+'sc': case prefix+'src':
-                textImg(`Bot ini menggunakan sc : https://github.com/Rhmn8/botauliav1\n\nNote :\njangan dijual and dibeli!`)
+                textImg(`Bot ini menggunakan sc : https://github.com/aulia-Team/auliaBot`)
                 break
             case prefix+'runtime':
-                textImg(`*「 RUNTIME BOT SKIMURA 」*\n\n${runtime(process.uptime())}\n\n\nJangan lupa subscribe youtube saya :\nhttps://bit.ly/AuliaRahmanOfficialYT`)
+                textImg(`「 RUNTIME HASKIMURA 」\n\n${runtime(process.uptime())}`)
                 break
             case prefix+'stats': 
-            case prefix+'botstatus':
             case prefix+'botstat':{
                 let totalchat = await aulia.chats.all()
 				let i = []
@@ -1479,7 +1425,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             case prefix+'igdl':
             case prefix+'instagram':
             case prefix+'ig': {
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (!isPremium) return reply(mess.OnlyPrem)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}ig* link ig`)
                 if (!isUrl(args[1]) && !args[1].includes('instagram.com')) return reply(mess.error.Iv)
                 reply(mess.wait)
@@ -1542,7 +1488,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 })
             }
                 break
-               case prefix+'tiktok': case prefix+'tiktoknowm': {
+               case prefix+'tiktok': case prefix+'tiktoknowm':{
                 if (!isPremium) return reply(mess.OnlyPrem)
                 if (args.length < 2) return reply(`Penggunaan ${command} _link tiktok_\n\nContoh : ${command} https://vt.tiktok.com/ZSJVPawwv/`)
                 if (!isUrl(args[1]) && !args[1].includes('tiktok.com')) return reply(body.replace(args[1], "*"+args[1]+"*")+'\n\n'+mess.error.Iv+`\nContoh : ${command} https://vt.tiktok.com/ZSJVPawwv/`)
@@ -1560,7 +1506,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                         })
                   }
      		break
-               case prefix+'tiktokmp3': case prefix+'tiktokaudio': {
+               case prefix+'tiktokmp3': case prefix+'tiktokaudio':{
                 if (!isPremium) return reply(mess.OnlyPrem)
                 if (args.length < 2) return reply(`Penggunaan ${command} _link tiktok_\n\nContoh : ${command} https://vt.tiktok.com/ZSJVPawwv/`)
                 if (!isUrl(args[1]) && !args[1].includes('tiktok.com')) return reply(body.replace(args[1], "*"+args[1]+"*")+'\n\n'+mess.error.Iv+`\nContoh : ${command} https://vt.tiktok.com/ZSJVPawwv/`)
@@ -1580,7 +1526,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
      		break
 //------------------< Stalker >-------------------
             case prefix+'igstalk': case prefix+'stalkig':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}igstalk* _username_`)
                 reply(mess.wait)
                 axios.get(`https://api-ramlan.herokuapp.com/api/igstalk?username=${args[1]}&apikey=${apikey}`)
@@ -1608,7 +1554,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             }
                 break
             case prefix+'ghstalk': case prefix+'githubstalk': case prefix+'ghuser':{
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 if (args.length < 2) return reply(`Kirim perintah *${prefix}ghstalk* _username_`)
                 reply(mess.wait)
                 axios.get(`https://api.github.com/users/${args[1]}`)
@@ -1645,7 +1591,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             }
                 break
             case prefix+'pinterest':
-                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply(`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                if (!isPremium) return reply(mess.OnlyPrem)
                 if (args.length === 1) return reply(`Kirim perintah *${prefix}pinterest query*`)
 
                 async function pinterestSearch(query) {
@@ -1708,7 +1654,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 break
 //------------------< VVIBU >-------------------
 			case prefix+'waifu':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+			if (!isPremium) return reply(mess.OnlyPrem)
                 reply(mess.wait)
 						axios.get(`https://api-ramlan.herokuapp.com/api/waifu?apikey=${apikey}`)
 						.then(({data}) => {
@@ -1718,7 +1664,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 						}
                       break
 			case prefix+'nekonime':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+			if (!isPremium) return reply(mess.OnlyPrem)
                 reply(mess.wait)
 						axios.get(`https://api-ramlan.herokuapp.com/api/neko?apikey=${apikey}`)
 						.then(({data}) => {
@@ -1728,21 +1674,21 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 						}
                       break
 			case prefix+'megumin':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+			if (!isPremium) return reply(mess.OnlyPrem)
                 reply(mess.wait)
 						sendFileFromUrl(from, `https://api-ramlan.herokuapp.com/api/megumin?apikey=${apikey}`, 'Neh', msg)
 						limitAdd(sender, limit)
 						}
                       break
 			case prefix+'sagiri':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+			if (!isPremium) return reply(mess.OnlyPrem)
                 reply(mess.wait)
 						sendFileFromUrl(from, `https://api-ramlan.herokuapp.com/api/sagiri?apikey=${apikey}`, 'Neh', msg)
 						limitAdd(sender, limit)
 						}
                       break
 			case prefix+'shinobu':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+			if (!isPremium) return reply(mess.OnlyPrem)
                 reply(mess.wait)
 						axios.get('https://waifu.pics/api/sfw/shinobu')
 						.then(({data}) => {
@@ -1752,7 +1698,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 						}
                       break
             case prefix+'loli':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+            if (!isPremium) return reply(mess.OnlyPrem)
                 reply(mess.wait)
                 axios.get(`https://api-ramlan.herokuapp.com/api/loli?apikey=${apikey}`)
 						.then(({data}) => {
@@ -1762,7 +1708,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 						}
                       break
             case prefix+'shota':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+            if (!isPremium) return reply(mess.OnlyPrem)
                 reply(mess.wait)
                 axios.get(`https://api-ramlan.herokuapp.com/api/shota?apikey=${apikey}`)
 						.then(({data}) => {
@@ -1772,7 +1718,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 						}
                       break
             case prefix+'husbu':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+            if (!isPremium) return reply(mess.OnlyPrem)
                 reply(mess.wait)
                 axios.get(`https://api-ramlan.herokuapp.com/api/husbu?apikey=${apikey}`)
 						.then(({data}) => {
@@ -1787,11 +1733,11 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             case prefix+'echi':
             case prefix+'ahegao':
             case prefix+'trap':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+            if (!isPremium) return reply(mess.OnlyPrem)
                 if (!isNsfw) return reply('Nsfw group belum aktif')
                 if (!isGroup)return reply(mess.OnlyGrup)
                 reply(mess.wait)
-						sendFileFromUrl(from, `https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`, 'Neh', msg)
+						sendFileFromUrl(from, `https://api-ramlan.herokuapp.com/api/nsfw/${command.slice(1)}?apikey=${apikey}`, 'Neh', msg)
 						limitAdd(sender, limit)
 						}						
                       break
@@ -1802,11 +1748,11 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             case prefix+'yuri':
             case prefix+'boobs':
             case prefix+'kuni':{
-                if (!isPremium) return reply(mess.OnlyPrem)
+            if (!isPremium) return reply(mess.OnlyPrem)
                 if (!isNsfw) return reply('Nsfw group belum aktif')
                 if (!isGroup)return reply(mess.OnlyGrup)
                 reply(mess.wait)
-                axios.get(`https://skimora.herokuapp.com/api/maker4?text=Ya%20Allah%20Kabulkan%20DoaKu&apikey=Alphabot`)
+                axios.get(`https://api-ramlan.herokuapp.com/api/nsfw/${command.slice(1)}?apikey=${apikey}`)
                 .then(({data}) => {
 						sendFileFromUrl(from, data.url, 'Neh', msg)
 						})
@@ -1815,7 +1761,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                       break
 //------------------< Premium >-------------------
             case prefix+'addprem':
-                if (!isOwner) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (args.length < 2) return reply(`Penggunaan :\n*${prefix}addprem* @tag waktu\n*${prefix}addprem* nomor waktu\n\nContoh : ${command} @tag 30d`)
                 if (mentioned.length !== 0){
                     for (let i = 0; i < mentioned.length; i++){
@@ -1828,7 +1774,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 }
                 break
             case prefix+'delprem':
-                if (!isOwner) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (args.length < 2) return reply(`Penggunaan :\n*${prefix}delprem* @tag\n*${prefix}delprem* nomor`)
                 if (mentioned.length !== 0){
                     for (let i = 0; i < mentioned.length; i++){
@@ -1860,7 +1806,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 break
 //------------------< BAN >-------------------
             case prefix+'ban':
-                if (!isOwner) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (mentioned.length !== 0){
                     for (let i = 0; i < mentioned.length; i++){
                         addBanned(mentioned[0], args[2], ban)
@@ -1878,7 +1824,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 }
                 break
             case prefix+'unban':
-                if (!isOwner) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (mentioned.length !== 0){
                     for (let i = 0; i < mentioned.length; i++){
                         unBanned(mentioned[i], ban)
@@ -2356,19 +2302,6 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 mentions(txti, arr, true)
                 break
 //------------------< Enable / Disable >-------------------
-            case prefix+'autoketik': // by rahman ganz
-                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
-                if (args.length === 1) return reply(`pilih enable atau disable`)
-                if (args[1].toLowerCase() === 'enable'){
-                   autoketik = true
-                   reply(`sukses aktif autoketik`)
-             } else if (args[1].toLowerCase() === 'disable'){
-                   autoketik = false
-                   reply(`sukses nonaktif autoketik`)
-                } else {
-                   reply(`pilih enable atau disable`)
-                 }
-                 break
             case prefix+'antibadword':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
@@ -2426,6 +2359,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             case prefix+'mute':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                 if (isMuted) return reply(`udah mute`)
                 mute.push(from)
                 fs.writeFileSync('./database/mute.json', JSON.stringify(mute))
@@ -2447,44 +2381,6 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     reply('Welcome nonaktif')
                 } else {
                     reply(`Pilih enable atau disable\nContoh : ${prefix}nsfw enable`)
-                }
-                break
-            case prefix+'antilinkig':
-                if (!isGroup) return reply(mess.OnlyGrup)
-                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
-                if (args.length === 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
-                if (args[1].toLowerCase() === 'enable'){
-                    if (isAntilinkIg) return reply(`Udah aktif`)
-                    antilinkig.push(from)
-		    fs.writeFileSync('./database/antilinkig.json', JSON.stringify(antilinkig))
-		    reply('Antilinkig grup aktif')
-                } else if (args[1].toLowerCase() === 'disable'){
-                    let anu = antilinkig.indexOf(from)
-                    antilinkig.splice(anu, 1)
-                    fs.writeFileSync('./database/antilinkig.json', JSON.stringify(antilinkig))
-                    reply('Antilinkig grup nonaktif')
-                } else {
-                    reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
-                }
-                break
-            case prefix+'antilinkyt':
-                if (!isGroup) return reply(mess.OnlyGrup)
-                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
-                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
-                if (args.length === 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
-                if (args[1].toLowerCase() === 'enable'){
-                    if (isAntiLinkyt) return reply(`Udah aktif`)
-                    antilinkyt.push(from)
-		    fs.writeFileSync('./database/antilinkyt.json', JSON.stringify(antilinkyt))
-		    reply('Antilinkyt grup aktif')
-                } else if (args[1].toLowerCase() === 'disable'){
-                    let anu = antilinkyt.indexOf(from)
-                    antilinkyt.splice(anu, 1)
-                    fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
-                    reply('Antilinkyt grup nonaktif')
-                } else {
-                    reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
                 }
                 break
             case prefix+'antilink':
@@ -2523,6 +2419,44 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     reply('Anti wa.me grup nonaktif')
                 } else {
                     reply(`Pilih enable atau disable\nContoh : ${prefix}antiwame enable`)
+                }
+                break 
+            case prefix+'antilinkig':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (args.length === 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
+                if (args[1].toLowerCase() === 'enable'){
+                    if (isAntilinkIg) return reply(`Udah aktif`)
+                    antilinkig.push(from)
+		    fs.writeFileSync('./database/antilinkig.json', JSON.stringify(antilinkig))
+		    reply('Antilinkig grup aktif')
+                } else if (args[1].toLowerCase() === 'disable'){
+                    let anu = antilinkig.indexOf(from)
+                    antilinkig.splice(anu, 1)
+                    fs.writeFileSync('./database/antilinkig.json', JSON.stringify(antilinkig))
+                    reply('Antilinkig grup nonaktif')
+                } else {
+                    reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
+                }
+                break
+            case prefix+'antilinkyt':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (args.length === 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
+                if (args[1].toLowerCase() === 'enable'){
+                    if (isAntiLinkyt) return reply(`Udah aktif`)
+                    antilinkyt.push(from)
+		    fs.writeFileSync('./database/antilinkyt.json', JSON.stringify(antilinkyt))
+		    reply('Antilinkyt grup aktif')
+                } else if (args[1].toLowerCase() === 'disable'){
+                    let anu = antilinkyt.indexOf(from)
+                    antilinkyt.splice(anu, 1)
+                    fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
+                    reply('Antilinkyt grup nonaktif')
+                } else {
+                    reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
                 }
                 break
             case prefix+'welcome':
@@ -2565,86 +2499,75 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                 reply(`*Pilihan*\n${prefix}sound1\n${prefix}sound2\n${prefix}sound3\n${prefix}sound4\n${prefix}sound5\n${prefix}sound6\n${prefix}sound7\n${prefix}sound8\n${prefix}sound9\n${prefix}sound10`)
                 break
             case prefix+'sound1':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound1.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound2':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound2.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound3':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound3.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound4':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound4.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound5':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound5.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound6':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound6.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound7':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound7.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound8':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound8.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound9':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound9.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
             case prefix+'sound10':{
+                if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
                 let son = fs.readFileSync('./media/music/sound10.mp3')
                 aulia.sendMessage(from, son, audio, { quoted: msg })              
                 limitAdd(sender, limit)
                 }
                 break
-//***************** RESPON CHAT *****************//
-            if (chats.includes('hai')){
-                reply(`hai juga kak`) // kalau yg ini error ga bisa respon hps aja ya kak
-             }
-            if (chats.includes('apa kabar')){
-                reply(`baik kak`) // kalau yg ini error ga bisa respon hps aja yg itu ya kak
-             }
-
-            // respon chat lainnya
-
-             case 'hello': case 'hallo':{
-                 reply(`hlo jg kak🤗`)
-             }
-             break
-             case 'assalamualaikum':{
-             	reply(`waalaikumsalam kak`)
-             }
-             break
-        
-        // mo nambah cht respon lgi? tambah lh sendiri tpi ingat kalau error jangan salahkan sc ini!
-//***************** BAILEYS ERROR | JAN DI UBAH UBAH NANTI ERROR *****************//
         }
     } catch (err) {
         console.log(color('[ERROR]', 'red'), err)
