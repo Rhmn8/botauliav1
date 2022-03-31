@@ -1172,7 +1172,12 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 break
             case prefix+'owner':
             case prefix+'creator':
-                aulia.sendContact(from, ownerNumber.split("@")[0], setting.ownerName, msg)
+                aulia.sendContact(from, ownerNumber.split("@")[0], setting.ownerPacar, msg)
+                .then((res) => aulia.sendMessage(from, 'Nih kontak pacarku', text, {quoted: res}))
+                break
+            case prefix+'ownerdoi':
+            case prefix+'pacarku':
+                aulia.sendContact(from, ownerPacar.split("@")[0], setting.ownerName, msg)
                 .then((res) => aulia.sendMessage(from, 'Nih kontak ownerku', text, {quoted: res}))
                 break
             case prefix+'ping':
@@ -2001,7 +2006,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
 //------------------< Owner >-------------------
             case prefix+'setpp': case prefix+'setppbot':
             case prefix+'setpic': case prefix+'setpicbot':{
-                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (isImage || isQuotedImage) {
                     let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : msg
                     let media = await aulia.downloadMediaMessage(encmedia)
@@ -2013,27 +2018,27 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             }
                 break
             case prefix+'setname':{
-                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (args.length < 2) return reply(`Kirim perintah ${command} nama\n\nContoh : ${command} auliaBot`)
                 aulia.updateProfileName(q)
                 reply(`[SUKSES] mengubah setname`)
             }
                 break
             case prefix+'setbio':{
-                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (args.length < 2) return reply(`Kirim perintah ${command} nama\n\nContoh : ${command} auliaBot`)
                 aulia.setStatus(q)
                 reply(`[SUKSES] mengubah setbio!`)
             }
                 break
             case prefix+'self':{
-                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 mode = 'self'
                 textImg('Berhasil berubah ke mode self')
             }
                 break
             case prefix+'publik': case prefix+'public':{
-                if (!isOwner && !fromMe) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 mode = 'public'
                 textImg('Berhasil berubah ke mode public')
             }
@@ -2050,7 +2055,7 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
             }
                 break
             case prefix+'setprefix':
-                if (!isOwner) return reply(mess.OnlyOwner)
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
                 if (args.length < 2) return reply(`Masukkan prefix\nOptions :\n=> multi\n=> nopref`)
                 if (q === 'multi'){
                     multi = true
@@ -2064,6 +2069,18 @@ _Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                     nopref = false
                     prefa = `${q}`
                     textImg(`Berhasil mengubah prefix ke ${q}`)
+                }
+                break
+            case prefix+'autoketik':
+                if (!isOwner && !isPacar) return reply(mess.OnlyOwner)
+                if (args.length < 2) return reply(`Masukkan prefix ${prefix}autoketik on`)
+                if (q === 'on'){
+                    autoketik = true
+                    textImg(`Berhasil mengubah autoketik on`)
+                } else if (q === 'off'){
+                    autoketik = false
+                    autoket = true
+                    textImg(`Berhasil mengubah autoketik off`)
                 }
                 break
             case prefix+'setthumb':
