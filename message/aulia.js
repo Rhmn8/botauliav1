@@ -81,7 +81,8 @@ let prefa = 'anjing'
 let mode = 'public'
 
 // auto ketik
-let autoketik = 'true'
+let autoketik = true
+let autoket = false
 
 let {
     ownerNumber,
@@ -247,7 +248,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
           await aulia.updatePresence(from, Presence.composing)
     }
         if (autoketik){
-          if (autoketik == false) return
+          if (autoket == false) return
           await aulia.updatePresence(from, Presence.composing)
     }
       
@@ -1177,7 +1178,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 break
             case prefix+'ownerdoi':
             case prefix+'pacarku':
-                aulia.sendContact(from, ownerPacar.split("@")[0], setting.ownerName, msg)
+                aulia.sendContact(from, pacarNumber.split("@")[0], setting.pacarNumber, msg)
                 .then((res) => aulia.sendMessage(from, 'Nih kontak ownerku', text, {quoted: res}))
                 break
             case prefix+'ping':
