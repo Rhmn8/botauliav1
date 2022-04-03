@@ -4,13 +4,13 @@
 
 <img src="http://auliahost.mwebs.id/images.png" alt="Hi Ka" width="600">
 
-<a href="https://avatars.githubusercontent.com/u/81602606?v=4"><img title="Aulia Rahman" src="https://img.shields.io/badge/Aulia Rahman-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+<a href="https://avatars.githubusercontent.com/u/81602606?v=4"><img title="Aulia Rahman" src="https://img.shields.io/badge/Aulia Rahman-blue?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 
 </p>
 
 <p align="center">
 
-<a href="https://github.com/Rhmn8"><img title="Author" src="https://img.shields.io/badge/AUTHOR-AULIA RAHMAN-orange.svg?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/Rhmn8"><img title="Author" src="https://img.shields.io/badge/AUTHOR-AULIA RAHMAN-green.svg?style=for-the-badge&logo=github"></a>
 
 </p>
 
