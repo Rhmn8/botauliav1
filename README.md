@@ -1,8 +1,8 @@
-## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> I'M AULIA RAHMAN GANZ
+## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> HII PENGGUNA BOT👋
 
 <p align="center">
 
-<img src="http://indonesiacyberexploid.mwebs.id/pp.png" alt="Hi Ka" width="500">
+<img src="http://auliahost.mwebs.id/images.png" alt="Hi Ka" width="550">
 
 <a href="https://avatars.githubusercontent.com/u/81602606?v=4"><img title="Aulia Rahman" src="https://img.shields.io/badge/Aulia Rahman-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 
@@ -10,7 +10,7 @@
 
 <p align="center">
 
-<a href="https://github.com/Rhmn8/"><img title="Author" src="https://img.shields.io/badge/AUTHOR-AULIA RAHMAN-orange.svg?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/Rhmn8"><img title="Author" src="https://img.shields.io/badge/AUTHOR-AULIA RAHMAN-orange.svg?style=for-the-badge&logo=github"></a>
 
 </p>
 
@@ -19,8 +19,6 @@
  
 
 </details>
-
-### 𝗧𝗵𝗮𝗻𝗸𝘀 𝗙𝗼𝗿 𝗔𝗹𝗹 𝗖𝗿𝗲𝗮𝘁𝗼𝗿 𝗕𝗼𝘁
 
 ### BAHAN BOT <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
@@ -39,7 +37,7 @@
 
 ### CARA INSTALLNYA  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
 
-```bash
+```
 $ pkg install update && pkg install upgrade
 
 $ pkg install git
@@ -63,7 +61,7 @@ $ Tinggal scan kode qr, done
 
 ## CARA INSTALL VPS/RDP
 
-```bash
+```
 $ apt install git
 
 $ apt install nodejs
@@ -89,10 +87,11 @@ $ node main.js
 
 * [`Instagram Admin`](https://instagram.com/haskimuramods)
 
-* [`WhatsApp Admin `](https://wa.me/6285821676621)
+* [`WhatsApp Admin`](https://wa.me/6285821676621)
 
-## THANKS TO <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Handshake.gif" width="60px">
+### 𝗧𝗵𝗮𝗻𝗸𝘀 𝗙𝗼𝗿 𝗔𝗹𝗹 𝗖𝗿𝗲𝗮𝘁𝗼𝗿 𝗕𝗼𝘁 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Handshake.gif" width="60px">
 
+```
 * `ALLAH SWT`
 
 * `BAILEYS`
@@ -106,6 +105,8 @@ $ node main.js
 * `Aulia Rahman`
 
 * `CREATOR BOT`
+```
+
 
 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Mario_Gameplay.gif" alt="Mario Game" width="600" />
 
