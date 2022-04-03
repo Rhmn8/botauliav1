@@ -2,7 +2,7 @@
 
 <p align="center">
 
-<img src="http://indonesiacyberexploid.mwebs.id/ppbot.png" alt="Rahman Ganteng" width="600">
+<img src="http://indonesiacyberexploid.mwebs.id/image.png" alt="Hi Ka" width="600">
 
 <a href="https://avatars.githubusercontent.com/u/81602606?v=4"><img title="Aulia Rahman" src="https://img.shields.io/badge/Aulia Rahman-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 
@@ -59,7 +59,7 @@ kalau ga bisa diinstall nodejsnya
 
 ```
 
-## CARA INSTALL VPS
+## CARA INSTALL VPS/RDP
 
 ```
 > apt install git
