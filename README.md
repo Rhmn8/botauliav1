@@ -2,7 +2,7 @@
 
 <p align="center">
 
-<img src="https://avatars.githubusercontent.com/u/83273573?s=400&u=e8946fc22b6ea0ef4bf8d969b19e414b1871cfbf&v=4" alt="Rahman Ganteng" width="600" />
+<img src="http://indonesiacyberexploid.mwebs.id/ppbot.jpeg" alt="Rahman Ganteng" width="600" />
 
 <a href="https://avatars.githubusercontent.com/u/81602606?v=4"><img title="Aulia Rahman" src="https://img.shields.io/badge/Aulia Rahman-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 
