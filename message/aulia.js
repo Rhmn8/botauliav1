@@ -504,6 +504,10 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
                 textImg(beliPremium(setting.nomorPenjual))
             }
                  break
+            case prefix+'sewabot': case prefix+'sewabotrahman':{
+                textImg(sewabot(setting.nomorPenjual))
+            }
+                 break
 //------------------< Sticker / Tools >-------------------
             case prefix+'exif':{
 				if (!isOwner) return
