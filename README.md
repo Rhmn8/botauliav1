@@ -92,19 +92,19 @@ $ node main.js
 ### 𝗧𝗵𝗮𝗻𝗸𝘀 𝗙𝗼𝗿 𝗔𝗹𝗹 𝗖𝗿𝗲𝗮𝘁𝗼𝗿 𝗕𝗼𝘁 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Handshake.gif" width="60px">
 
 ```
-* `ALLAH SWT`
+* ALLAH SWT
 
-* `BAILEYS`
+* BAILEYS
 
-* `MHANKBARBAR`
+* MHANKBARBAR
 
-* `Aqulz`
+* Aqulz
 
-* `Ramlan ID`
+* Ramlan ID
 
-* `Aulia Rahman`
+* Aulia Rahman
 
-* `CREATOR BOT`
+* PENGGUNA BOT
 ```
 
 
