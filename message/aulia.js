@@ -427,7 +427,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                 break
             case prefix+'stickermenu': case prefix+'stikermenu': case prefix+'menusticker': case prefix+'menusticker':{
-                textImg(stickerMenu(prefix))
+                textImg(stickerMenu(prefix, setting.botName))
             }
                 break
             case prefix+'creatormenu': case prefix+'ownermenu':{
