@@ -98,7 +98,7 @@ moment.tz.setDefault("Asia/Jakarta").locale("id");
 
 module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
     try {
-        const { menu, newMenu, stickerMenu, ownerMenu, groupMenu, sistemMenu, gabutMenu, gameMenu, downloadMenu, searchMenu, stalkMenu, randomMenu, animeMenu, toolsMenu, makerMenu, otherMenu, hentaiMenu, storageMenu, rahmanMenu, beliPremium, sewabot} = require("./help");
+        const { menu, newMenu, stickerMenu, ownerMenu, groupMenu, sistemMenu, gabutMenu, gameMenu, downloadMenu, searchMenu, stalkMenu, randomMenu, animeMenu, toolsMenu, makerMenu, otherMenu, hentaiMenu, storageMenu, rahmanMenu, beliPremium, sewabotMenu} = require("./help");
         const { type, quotedMsg, isGroup, isQuotedMsg, mentioned, sender, from, fromMe, pushname, chats, isBaileys } = msg
         if (isBaileys) return
         const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
@@ -505,7 +505,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                  break
             case prefix+'sewabot': case prefix+'sewabotrahman':{
-                textImg(sewabot(setting.botName))
+                textImg(sewabotMenu(setting.botName, setting.nomorPenjual))
             }
                  break
 //------------------< Sticker / Tools >-------------------
