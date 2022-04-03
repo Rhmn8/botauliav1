@@ -2,7 +2,7 @@
 
 <p align="center">
 
-<img src="http://auliahost.mwebs.id/images.png" alt="Hi Ka" width="600">
+<img src="http://auliahost.mwebs.id/images.png" alt="Hi Ka" width="600" height="350">
 
 <a href="https://avatars.githubusercontent.com/u/81602606?v=4"><img title="Aulia Rahman" src="https://img.shields.io/badge/Aulia Rahman-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 
@@ -40,43 +40,43 @@
 ### CARA INSTALLNYA  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
 
 ```bash
-> pkg install update && pkg install upgrade
+$ pkg install update && pkg install upgrade
 
-> pkg install git
+$ pkg install git
 
-> pkg install nodejs
+$ pkg install nodejs
 kalau ga bisa diinstall nodejsnya
 
-> pkg upgrade nodejs
+$ pkg upgrade nodejs
 
-> git clone https://github.com/Rhmn8/botauliav1
+$ git clone https://github.com/Rhmn8/botauliav1
 
-> cd botauliav1
+$ cd botauliav1
 
-> npm i atau npm install
+$ npm i atau npm install
 
-> node main.js atau npm start
+$ node main.js atau npm start
 
-> Tinggal scan kode qr, done
+$ Tinggal scan kode qr, done
 
 ```
 
 ## CARA INSTALL VPS/RDP
 
-```
-> apt install git
+bash```
+$ apt install git
 
-> apt install nodejs
+$ apt install nodejs
 
-> apt install ffmpeg
+$ apt install ffmpeg
 
-> git clone https://github.com/Rhmn8/botauliav1
+$ git clone https://github.com/Rhmn8/botauliav1
 
-> cd botauliav1
+$ cd botauliav1
 
-> npm install
+$ npm install
 
-> node main.js
+$ node main.js
 ```
 
 ## DONASI <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/coin.gif" width="29px">
