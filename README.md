@@ -1,4 +1,4 @@
-## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> I'M • RAHMAN GANTENG
+## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> I'M AULIA RAHMAN GANZ
 
 <p align="center">
 
@@ -10,7 +10,7 @@
 
 <p align="center">
 
-<a href="https://github.com/Rhmn8"><img title="Author" src="https://img.shields.io/badge/AUTHOR-AULIA RAHMAN-orange.svg?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/Rhmn8/"><img title="Author" src="https://img.shields.io/badge/AUTHOR-AULIA RAHMAN-orange.svg?style=for-the-badge&logo=github"></a>
 
 </p>
 
@@ -40,6 +40,8 @@
 ### CARA INSTALLNYA  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
 
 ```bash
+> pkg install update && pkg install upgrade
+
 > pkg install git
 
 > pkg install nodejs
@@ -79,13 +81,13 @@ kalau ga bisa diinstall nodejsnya
 
 ## DONASI <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/coin.gif" width="29px">
 
-* [`Donasi Gopay`](https://mtsppkpkalteng.mwebs.id/Screenshot_20211217-203533_WhatsApp.jpg) 
+* [`Donasi Gopay`](http://indonesiacyberexploid.mwebs.id/donasi/donate.php) 
 
 ## SOSIAL MEDIA ADMIN <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
-* [`Youtube Admin`](https://youtube.com/c/AuliaRahmanOfficial123)
+* [`Youtube Admin`](https://youtube.com/AuliaRahmanOfficial123)
 
-* [`Instagram Admin`](https://instagram.com/rahman_nayyers)
+* [`Instagram Admin`](https://instagram.com/haskimuramods)
 
 * [`WhatsApp Admin `](https://wa.me/6285821676621)
 
