@@ -1,4 +1,4 @@
-exports.sewabot = (botName, nomorPenjual) =>  {
+exports.sewabot = (botName) =>  {
       return `*「 SEWA GRUP ${botName} 」*
 
 → *ADA SISTEM BUAT MENJAGA GRUP ANDA*
@@ -19,7 +19,7 @@ exports.sewabot = (botName, nomorPenjual) =>  {
 
 → *ORDER? SILAHKAN CHAT DIBAWAH INI*
 
-↝ ${nomorPenjual}
+↝ https://wa.me/6285821676621
 
 GITHUB : https://github.com/Rhmn8`
 }
