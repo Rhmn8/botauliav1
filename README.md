@@ -74,10 +74,6 @@ $ npm install
 $ node main.js atau npm start
 ```
 
-## Donasi <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/coin.gif" width="29px">
-
-* [`Donasi Gopay`](http://indonesiacyberexploid.mwebs.id/donasi/donate.php) 
-
 ## Sosial Media Me <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
 * [`Youtube Admin`](https://youtube.com/AuliaRahmanOfficial123)
