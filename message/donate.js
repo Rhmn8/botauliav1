@@ -1,5 +1,5 @@
-exports.sewabot = (nomorPenjual) =>  {
-      return `*「 SEWA GRUP BOT SKIMURA 」*
+exports.sewabot = (botName, nomorPenjual) =>  {
+      return `*「 SEWA GRUP ${botName} 」*
 
 → *ADA SISTEM BUAT MENJAGA GRUP ANDA*
 
