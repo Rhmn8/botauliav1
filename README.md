@@ -63,7 +63,7 @@ $ Tinggal scan kode qr, done
 
 ## CARA INSTALL VPS/RDP
 
-bash```
+```bash
 $ apt install git
 
 $ apt install nodejs
