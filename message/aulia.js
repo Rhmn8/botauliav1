@@ -505,7 +505,7 @@ module.exports = async(aulia, msg, blocked, baterai, _afk, welcome, left) => {
             }
                  break
             case prefix+'sewabot': case prefix+'sewabotrahman':{
-                textImg(sewabot(setting.nomorPenjual))
+                textImg(sewabot(setting.botName))
             }
                  break
 //------------------< Sticker / Tools >-------------------
