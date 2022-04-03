@@ -2,7 +2,7 @@
 
 <p align="center">
 
-<img src="http://indonesiacyberexploid.mwebs.id/ppbot.png" alt="mau nyolong ya bang? -by rahman-" width="600" />
+<img src="http://indonesiacyberexploid.mwebs.id/ppbot.png" alt="Rahman Ganteng" width="600">
 
 <a href="https://avatars.githubusercontent.com/u/81602606?v=4"><img title="Aulia Rahman" src="https://img.shields.io/badge/Aulia Rahman-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 
@@ -30,7 +30,11 @@
 
 ### DOWNLOAD TERMUX DI? <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
-[`F-DROID TERMUX`](https://f-droid.org/repo/com.termux_118.apk)
+[`F-DROID TERMUX V.118`](https://f-droid.org/repo/com.termux_118.apk)
+
+[`F-DROID TERMUX V.117`](https://f-droid.org/repo/com.termux_117.apk)
+
+[`F-DROID TERMUX V.116`](https://f-droid.org/repo/com.termux_116.apk)
 
 
 ### CARA INSTALLNYA  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
