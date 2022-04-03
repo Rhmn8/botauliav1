@@ -26,7 +26,7 @@
 * `VPS`
 * `RDP`
 
-### DOWNLOAD TERMUX DI? <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
+### Download Termux Di? <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
 [`F-DROID TERMUX V.118`](https://f-droid.org/repo/com.termux_118.apk)
 
@@ -35,15 +35,12 @@
 [`F-DROID TERMUX V.116`](https://f-droid.org/repo/com.termux_116.apk)
 
 
-### CARA INSTALLNYA  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
+### Cara Install For Termux  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/hmm.gif" width="29px">
 
 ```
-$ pkg install update && pkg install upgrade
-
 $ pkg install git
 
-$ pkg install nodejs
-kalau ga bisa diinstall nodejsnya
+$ pkg install nodejs [error]
 
 $ pkg upgrade nodejs
 
@@ -59,7 +56,7 @@ $ Tinggal scan kode qr, done
 
 ```
 
-## CARA INSTALL VPS/RDP
+## Cara Install Rdp/Vps
 
 ```
 $ apt install git
@@ -74,14 +71,14 @@ $ cd botauliav1
 
 $ npm install
 
-$ node main.js
+$ node main.js atau npm start
 ```
 
-## DONASI <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/coin.gif" width="29px">
+## Donasi <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/coin.gif" width="29px">
 
 * [`Donasi Gopay`](http://indonesiacyberexploid.mwebs.id/donasi/donate.php) 
 
-## SOSIAL MEDIA ADMIN <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
+## Sosial Media Me <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/powerup.gif" width="29px">
 
 * [`Youtube Admin`](https://youtube.com/AuliaRahmanOfficial123)
 
@@ -91,21 +88,20 @@ $ node main.js
 
 ### 𝗧𝗵𝗮𝗻𝗸𝘀 𝗙𝗼𝗿 𝗔𝗹𝗹 𝗖𝗿𝗲𝗮𝘁𝗼𝗿 𝗕𝗼𝘁 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Handshake.gif" width="60px">
 
-```
-* ALLAH SWT
 
-* BAILEYS
+* `ALLAH SWT`
 
-* MHANKBARBAR
+* `BAILEYS`
 
-* Aqulz
+* `MHANKBARBAR`
 
-* Ramlan ID
+* `Aqulz`
 
-* Aulia Rahman
+* `Ramlan ID`
 
-* PENGGUNA BOT
-```
+* `Aulia Rahman`
+
+* `PENGGUNA BOT`
 
 
 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Mario_Gameplay.gif" alt="Mario Game" width="600" />
